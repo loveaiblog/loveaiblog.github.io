@@ -3,20 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Welcome (‾◡◝) | Zihan&#39;s Blog</title>
+  <title>Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT | Zihan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Development" />
   
   
   
-  <meta name="description" content="Keep a log of development and learning activities.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zihan&#39;s Blog">
-<meta property="og:url" content="https://loveaiblog.github.io/index.html">
+  
+  <meta name="description" content="Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVATWhat is RLE?When reading a mask in the format of numpy.array line by line, you often encounter long sequences of consecutive 0 (or Fa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT">
+<meta property="og:url" content="https://loveaiblog.github.io/2025/03/04/mask2rle/index.html">
 <meta property="og:site_name" content="Zihan&#39;s Blog">
-<meta property="og:description" content="Keep a log of development and learning activities.">
+<meta property="og:description" content="Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVATWhat is RLE?When reading a mask in the format of numpy.array line by line, you often encounter long sequences of consecutive 0 (or Fa">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-04T13:27:00.000Z">
+<meta property="article:modified_time" content="2025-03-04T13:27:52.860Z">
 <meta property="article:author" content="Zihan Liu">
+<meta property="article:tag" content="Development">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zihan&#39;s Blog" type="application/atom+xml">
@@ -52,7 +57,7 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -100,17 +105,15 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-    <article id="post-mask2rle"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-mask2rle" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2025/03/04/mask2rle/">Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT
     </h1>
   
 
@@ -124,6 +127,10 @@
 
        
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -161,94 +168,50 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Development/" rel="tag">Development</a></li></ul>
 
       
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
     </footer>
     <hr class="entry-footer-hr">
   </div>
+  
+    
   
 </article>
 
 <!-- Table of Contents -->
 
-  
-
-
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Convert-Mask-from-Numpy-Array-to-RLE-Run-Length-Encoding-for-CVAT"><span class="nav-number">1.</span> <span class="nav-text">Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-RLE"><span class="nav-number">1.1.</span> <span class="nav-text">What is RLE?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Standard-Implementation"><span class="nav-number">1.2.</span> <span class="nav-text">Standard Implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-efficient-Implementation"><span class="nav-number">1.3.</span> <span class="nav-text">Time-efficient Implementation</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 72%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-</div>
-</div>
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2025/03/04/mask2rle/">Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT</a></h6>
-              <span>March 4, 2025</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-
-  
-</aside>
         
       </div>
 
