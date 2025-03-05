@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Visualized SAM2 Video Segmentation with Gradio | Zihan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Development" />
+  
+  
+  
+  
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Visualized SAM2 Video Segmentation with Gradio">
+<meta property="og:url" content="https://loveaiblog.github.io/2025/03/05/sam2gradio/index.html">
+<meta property="og:site_name" content="Zihan&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-05T11:20:00.000Z">
+<meta property="article:modified_time" content="2025-03-05T12:22:42.570Z">
+<meta property="article:author" content="Zihan Liu">
+<meta property="article:tag" content="Development">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zihan&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Zihan&#39;s Blog" rel="home"> Zihan&#39;s Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">Keep a log of development and learning activities.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-sam2gradio" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Visualized SAM2 Video Segmentation with Gradio
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2025/03/05/sam2gradio/" class="article-date">
+	  <time datetime="2025-03-05T11:20:00.000Z" itemprop="datePublished">March 5, 2025</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  Total Views for This Post: <span id="busuanzi_value_page_pv"></span>
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Visualized-SAM2-Video-Segmentation-with-Gradio"><a href="#Visualized-SAM2-Video-Segmentation-with-Gradio" class="headerlink" title="Visualized SAM2 Video Segmentation with Gradio"></a>Visualized SAM2 Video Segmentation with Gradio</h1><p>This blog explains a simple implementation of a <a target="_blank" rel="noopener" href="https://www.gradio.app/guides/quickstart">Gradio</a>-based UI for the <a target="_blank" rel="noopener" href="https://ai.meta.com/sam2/">SAM2 (Segment Anything 2)</a> video segmentation model. The code processes input videos, performs object segmentation using SAM2, and visualizes results. Let’s break down the key components:</p>
+<h2 id="Imports-Device-Configuration"><a href="#Imports-Device-Configuration" class="headerlink" title="Imports &amp; Device Configuration"></a>Imports &amp; Device Configuration</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"><span class="keyword">import</span> cv2, os, numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># ... other imports ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Device selection</span></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">&quot;cuda&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    device = torch.device(<span class="string">&quot;cpu&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Functionality</strong>:  </p>
+<ul>
+<li>Imports necessary libraries for computer vision, deep learning, and UI creation  </li>
+<li>Automatically selects the best available computation device (CUDA GPU &gt; CPU)</li>
+</ul>
+<h2 id="Video-Processing-Utilities"><a href="#Video-Processing-Utilities" class="headerlink" title="Video Processing Utilities"></a>Video Processing Utilities</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">video2images</span>(<span class="params">video, output_folder</span>):</span><br><span class="line">    <span class="comment"># Video to frame extraction logic</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">images2video</span>(<span class="params">image_folder, output_video_path, fps=<span class="number">24</span></span>):</span><br><span class="line">    <span class="comment"># Frame to video conversion logic</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Key Features</strong>:  </p>
+<ul>
+<li><code>video2images()</code>: Extracts frames from video, skips first frame (assumed to be overlay grid)  </li>
+<li><code>images2video()</code>: Reconstructs video from processed frames with specified FPS</li>
+</ul>
+<h2 id="SAM2-Inference-Pipeline"><a href="#SAM2-Inference-Pipeline" class="headerlink" title="SAM2 Inference Pipeline"></a>SAM2 Inference Pipeline</h2><p>Let’s take a closer look at the core SAM2 inference implementation that powers the video segmentation. This section contains the most critical logic for processing user inputs and generating segmentation masks.</p>
+<h2 id="Model-Initialization"><a href="#Model-Initialization" class="headerlink" title="Model Initialization"></a>Model Initialization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sam2_inference</span>(<span class="params">images_path, point_x, point_y, save_dir_name</span>):</span><br><span class="line">    <span class="comment"># Model configuration</span></span><br><span class="line">    model_cfg = <span class="string">&quot;configs/sam2.1/sam2.1_hiera_l.yaml&quot;</span></span><br><span class="line">    sam2_checkpoint = <span class="string">&quot;/path/to/checkpoint.pt&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Handle different compute architectures</span></span><br><span class="line">    <span class="keyword">if</span> device.<span class="built_in">type</span> == <span class="string">&quot;cuda&quot;</span>:</span><br><span class="line">        torch.autocast(<span class="string">&quot;cuda&quot;</span>, dtype=torch.bfloat16).__enter__()</span><br><span class="line">        <span class="keyword">if</span> torch.cuda.get_device_properties(<span class="number">0</span>).major &gt;= <span class="number">8</span>:</span><br><span class="line">            torch.backends.cuda.matmul.allow_tf32 = <span class="literal">True</span></span><br><span class="line">            torch.backends.cudnn.allow_tf32 = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Initialize predictor with proper device handling</span></span><br><span class="line">    <span class="keyword">from</span> sam2.build_sam <span class="keyword">import</span> build_sam2_video_predictor</span><br><span class="line">    predictor = build_sam2_video_predictor(</span><br><span class="line">        model_cfg, </span><br><span class="line">        sam2_checkpoint,</span><br><span class="line">        device=device</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p><strong>Key Components</strong>:</p>
+<ul>
+<li>Loads model configuration from YAML file</li>
+<li>Initializes SAM2 predictor with pretrained weights</li>
+</ul>
+<h2 id="Prompt-Processing-State-Initialization"><a href="#Prompt-Processing-State-Initialization" class="headerlink" title="Prompt Processing &amp; State Initialization"></a>Prompt Processing &amp; State Initialization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Initialize inference state with first video frame</span></span><br><span class="line">inference_state = predictor.init_state(video_path=images_path)</span><br><span class="line">predictor.reset_state(inference_state)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Process user click coordinates</span></span><br><span class="line">ann_frame_idx = <span class="number">0</span>  <span class="comment"># First frame index</span></span><br><span class="line">ann_obj_id = <span class="number">1</span>     <span class="comment"># First object ID</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Convert user click to model input</span></span><br><span class="line">points = np.array([[<span class="built_in">int</span>(point_x), <span class="built_in">int</span>(point_y)]], dtype=np.float32)</span><br><span class="line">labels = np.array([<span class="number">1</span>], np.int32)  <span class="comment"># 1 = positive prompt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Add prompts to predictor</span></span><br><span class="line">_, out_obj_ids, out_mask_logits = predictor.add_new_points_or_box(</span><br><span class="line">    inference_state=inference_state,</span><br><span class="line">    frame_idx=ann_frame_idx,</span><br><span class="line">    obj_id=ann_obj_id,</span><br><span class="line">    points=points,</span><br><span class="line">    labels=labels,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Critical Operations</strong>:</p>
+<ul>
+<li>Load the images from the input video</li>
+<li>Creates initial inference state from video frames</li>
+<li>Add user click coordinates to a point prompt</li>
+</ul>
+<h2 id="Temporal-Mask-Propagation"><a href="#Temporal-Mask-Propagation" class="headerlink" title="Temporal Mask Propagation"></a>Temporal Mask Propagation</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Perform video-level mask inference</span></span><br><span class="line">video_segments = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> out_frame_idx, out_obj_ids, out_mask_logits <span class="keyword">in</span> predictor.propagate_in_video(inference_state):</span><br><span class="line">    video_segments[out_frame_idx] = &#123;</span><br><span class="line">        out_obj_id: (out_mask_logits[i] &gt; <span class="number">0.0</span>).cpu().numpy()</span><br><span class="line">        <span class="keyword">for</span> i, out_obj_id <span class="keyword">in</span> <span class="built_in">enumerate</span>(out_obj_ids)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Core Algorithm</strong>:</p>
+<ul>
+<li>Iterates through video frames sequentially</li>
+</ul>
+<h2 id="Mask-Visualization-Output"><a href="#Mask-Visualization-Output" class="headerlink" title="Mask Visualization &amp; Output"></a>Mask Visualization &amp; Output</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">coloring_mask</span>(<span class="params">mask, color</span>):</span><br><span class="line">    <span class="comment"># Give a mask a color</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Iterate output masks</span></span><br><span class="line"><span class="keyword">for</span> out_frame_idx <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(frame_names), vis_frame_stride):</span><br><span class="line">    frame_idx = cv2.imread(...)</span><br><span class="line">    frame_idx = torch.tensor(frame_idx, dtype=torch.float32).to(device)</span><br><span class="line">    mask_idx = torch.zeros_like(frame_idx)</span><br><span class="line">    <span class="keyword">for</span> out_obj_id, out_mask <span class="keyword">in</span> video_segments[out_frame_idx].items():</span><br><span class="line">        <span class="comment"># Apply color blending to masks</span></span><br><span class="line">        colored_mask = coloring_mask(out_mask,color[out_obj_id-<span class="number">1</span>])</span><br><span class="line">        frame_copy = frame_idx.clone()</span><br><span class="line">        frame_copy[mask] = colored_mask[mask]</span><br><span class="line">        mask_idx[mask] = <span class="number">255</span></span><br><span class="line">        alpha = <span class="number">0.7</span></span><br><span class="line">        beta = <span class="number">1</span> - alpha</span><br><span class="line">        frame_idx = torch.add(frame_copy * alpha, frame_idx * beta)</span><br><span class="line">    <span class="comment"># Save to path</span></span><br><span class="line">    frame_idx = cv2.imwrite(..., frame_idx.cpu().numpy())</span><br><span class="line">    mask_idx = cv2.imwrite(..., mask_idx.cpu().numpy())</span><br></pre></td></tr></table></figure>
+
+<p><strong>Visualization Techniques</strong>:</p>
+<ul>
+<li>Implements blending (70% mask opacity &amp; 30% frame opacity)</li>
+<li>Saves both blended visualizations and raw masks</li>
+</ul>
+<h2 id="Main-Function-sam2-video"><a href="#Main-Function-sam2-video" class="headerlink" title="Main Function sam2_video()"></a>Main Function <code>sam2_video()</code></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sam2_video</span>(<span class="params">video, point_x, point_y</span>):</span><br><span class="line">    <span class="comment"># Convert video to images</span></span><br><span class="line">    video2image_saved = ...</span><br><span class="line">    output_video_folder = ...</span><br><span class="line"></span><br><span class="line">    fps, video_name = video2images(video, video2image_saved)</span><br><span class="line">    images_path = os.path.join(video2image_saved, video_name)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Perform SAM2 inference</span></span><br><span class="line">    images_outputs_path, mask_dir = sam2_inference(images_path, height, width, video_name)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Convert images back to video</span></span><br><span class="line">    output_video_path = os.path.join(output_video_folder, video_name + <span class="string">&#x27;.mp4&#x27;</span>)</span><br><span class="line">    output_mask_path = os.path.join(output_video_folder, video_name + <span class="string">&#x27;_mask.mp4&#x27;</span>)</span><br><span class="line">    images2video(images_outputs_path, output_video_path, fps)</span><br><span class="line">    images2video(mask_dir, output_mask_path, fps)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> output_video_path, output_mask_path</span><br></pre></td></tr></table></figure>
+
+<p><strong>Explanation</strong>:</p>
+<ul>
+<li>It first converts the video into individual images.</li>
+<li>Then, it runs SAM2 segmentation on those images.</li>
+<li>Finally, it converts the processed frames back into a video, both with and without masks, and returns the video paths for download.</li>
+</ul>
+<h2 id="Gradio-Interface"><a href="#Gradio-Interface" class="headerlink" title="Gradio Interface"></a>Gradio Interface</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">        <span class="keyword">with</span> gr.Row():</span><br><span class="line">            input_video = gr.Video(<span class="built_in">format</span>=<span class="string">&#x27;mp4&#x27;</span>,label=<span class="string">&#x27;Source Video&#x27;</span>)</span><br><span class="line">            first_img = gr.Image(label=<span class="string">&quot;First Image&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> gr.Row():</span><br><span class="line">            input_x_cord = gr.Textbox(label=<span class="string">&quot;X Cord&quot;</span>)</span><br><span class="line">            input_y_cord = gr.Textbox(label=<span class="string">&quot;Y Cord&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">with</span> gr.Row():</span><br><span class="line">            text_button = gr.Button(<span class="string">&quot;Submit&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> gr.Row():</span><br><span class="line">            output_video = gr.Video(<span class="built_in">format</span>=<span class="string">&#x27;mp4&#x27;</span>,label=<span class="string">&quot;SAM2 Vis&quot;</span>,show_download_button=<span class="literal">True</span>)</span><br><span class="line">            output_mask = gr.Video(<span class="built_in">format</span>=<span class="string">&#x27;mp4&#x27;</span>,label=<span class="string">&quot;Mask&quot;</span>,show_download_button=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        input_video.upload(load_first_img, [input_video],[first_img])</span><br><span class="line">        first_img.select(get_select_coords, [first_img,input_video], [input_x_cord, input_y_cord])</span><br><span class="line">        text_button.click(sam2_video, [input_video, input_x_cord, input_y_cord], [output_video, output_mask])</span><br><span class="line"></span><br><span class="line">    demo.launch()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Architecture-Overview"><a href="#Architecture-Overview" class="headerlink" title="Architecture Overview"></a>Architecture Overview</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    style A fill:#e3f2fd,stroke:#fff,stroke-width:2px</span><br><span class="line">    style B fill:#c5e1f7,stroke:#fff,stroke-width:2px</span><br><span class="line">    style C fill:#bbdefb,stroke:#fff,stroke-width:2px</span><br><span class="line">    style D fill:#90caf9,stroke:#fff,stroke-width:2px</span><br><span class="line">    style E fill:#81d4fa,stroke:#fff,stroke-width:2px</span><br><span class="line">    style F fill:#64b5f6,stroke:#fff,stroke-width:2px</span><br><span class="line">    style G fill:#42a5f5,stroke:#fff,stroke-width:2px</span><br><span class="line"></span><br><span class="line">    A[**Load Video**] --&gt; B[**Get First Frame**]</span><br><span class="line">    B --&gt; C[**User Click**]</span><br><span class="line">    C --&gt; D[**Get Point Prompt**]</span><br><span class="line">    D --&gt; E[**Propagate on Video**]</span><br><span class="line">    E --&gt; F[**Mask Visulization**]</span><br><span class="line">    F --&gt; G[**Generate Output Video**]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Follow-up-Development"><a href="#Follow-up-Development" class="headerlink" title="Follow-up Development"></a>Follow-up Development</h2><p>This blog demonstrates the implementation of SAM2 with a single point prompt. You can extend it to multiple prompts as needed (by utilizing <code>gr.render</code> to input a custom number of prompts). In addition, event listeners can be implemented through <code>gr.State</code> that enable to control the frames displayed on the UI through buttons to facilitate the selection of prompts on multiple frames.</p>
+<p>A more practical and stable implementation of SAM2 involves using a mask as the prompt. To achieve this you need to use <code>predictor.predict()</code> to generate a mask from a point or a box prompt using SAM (see <a target="_blank" rel="noopener" href="https://github.com/facebookresearch/sam2/blob/main/notebooks/image_predictor_example.ipynb">SAM2 Official Tutorial: image_predictor_example.ipynb</a>), which can then be used to invoke SAM2 with the mask prompt for further inference (mask prompt see <a target="_blank" rel="noopener" href="https://github.com/facebookresearch/sam2/blob/main/notebooks/automatic_mask_generator_example.ipynb">SAM2 Official Tutorial: automatic_mask_generator_example.ipynb</a>).</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Development/" rel="tag">Development</a></li></ul>
+
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'loveaiblog';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/03/04/mask2rle/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Visualized-SAM2-Video-Segmentation-with-Gradio"><span class="nav-number">1.</span> <span class="nav-text">Visualized SAM2 Video Segmentation with Gradio</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Imports-Device-Configuration"><span class="nav-number">1.1.</span> <span class="nav-text">Imports &amp; Device Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Video-Processing-Utilities"><span class="nav-number">1.2.</span> <span class="nav-text">Video Processing Utilities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SAM2-Inference-Pipeline"><span class="nav-number">1.3.</span> <span class="nav-text">SAM2 Inference Pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Initialization"><span class="nav-number">1.4.</span> <span class="nav-text">Model Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prompt-Processing-State-Initialization"><span class="nav-number">1.5.</span> <span class="nav-text">Prompt Processing &amp; State Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Temporal-Mask-Propagation"><span class="nav-number">1.6.</span> <span class="nav-text">Temporal Mask Propagation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mask-Visualization-Output"><span class="nav-number">1.7.</span> <span class="nav-text">Mask Visualization &amp; Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main-Function-sam2-video"><span class="nav-number">1.8.</span> <span class="nav-text">Main Function sam2_video()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradio-Interface"><span class="nav-number">1.9.</span> <span class="nav-text">Gradio Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture-Overview"><span class="nav-number">1.10.</span> <span class="nav-text">Architecture Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Follow-up-Development"><span class="nav-number">1.11.</span> <span class="nav-text">Follow-up Development</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2025 Zihan&#39;s Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              Total Visitors: <span id="busuanzi_value_site_uv"></span> 
+              Total Views: <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

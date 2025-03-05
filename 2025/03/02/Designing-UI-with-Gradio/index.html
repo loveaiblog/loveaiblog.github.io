@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Designing UI with Gradio | Zihan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Development" />
+  
+  
+  
+  
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Designing UI with Gradio">
+<meta property="og:url" content="https://loveaiblog.github.io/2025/03/02/Designing-UI-with-Gradio/index.html">
+<meta property="og:site_name" content="Zihan&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://loveaiblog.github.io/.io//image_1.png">
+<meta property="og:image" content="https://loveaiblog.github.io/2025/03/02/Designing-UI-with-Gradio/Designing-UI-with-Gradio/image_2.png">
+<meta property="og:image" content="https://loveaiblog.github.io/.io//image_3.png">
+<meta property="og:image" content="https://loveaiblog.github.io/.io//image_4.png">
+<meta property="article:published_time" content="2025-03-02T11:18:00.000Z">
+<meta property="article:modified_time" content="2025-03-05T13:37:00.589Z">
+<meta property="article:author" content="Zihan Liu">
+<meta property="article:tag" content="Development">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loveaiblog.github.io/.io//image_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Zihan&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Zihan&#39;s Blog" rel="home"> Zihan&#39;s Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">Keep a log of development and learning activities.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Designing-UI-with-Gradio" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Designing UI with Gradio
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2025/03/02/Designing-UI-with-Gradio/" class="article-date">
+	  <time datetime="2025-03-02T11:18:00.000Z" itemprop="datePublished">March 2, 2025</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  Total Views for This Post: <span id="busuanzi_value_page_pv"></span>
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Designing-UI-with-Gradio"><a href="#Designing-UI-with-Gradio" class="headerlink" title="Designing UI with Gradio"></a>Designing UI with Gradio</h1><h2 id="Quick-Start-with-gr-Interface"><a href="#Quick-Start-with-gr-Interface" class="headerlink" title="Quick Start with gr.Interface"></a>Quick Start with gr.Interface</h2><p>Let’s start from a simplest demo.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">your_function</span>(<span class="params">input_text</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;For example, a translation model&#x27;s output taking&quot;</span> + input_text + <span class="string">&quot;as input&quot;</span></span><br><span class="line"></span><br><span class="line">demo = gr.Interface(fn=your_function, inputs=<span class="string">&quot;text&quot;</span>, outputs=<span class="string">&quot;text&quot;</span>)</span><br><span class="line">demo.launch()  </span><br></pre></td></tr></table></figure>
+
+<p><code>gr.Interface</code> allows us to define a UI for <code>your_function</code>. The type of <code>inputs</code> and outputs must be predefined. Gradio allows <code>&#39;text&#39;</code> <code>&#39;image&#39;</code> <code>&#39;number&#39;</code> <code>&#39;audio&#39;</code> <code>&#39;video&#39;</code> for both inputs and outputs.</p>
+<p>Other types that might be useful:<br>Input-only:</p>
+<ul>
+<li><code>&#39;slider&#39;</code> - inputting values within a specified range using a slider</li>
+<li><code>&#39;checkbox&#39;</code> - boolean input</li>
+<li><code>&#39;radio&#39;</code> - single selection input</li>
+<li><code>&#39;dropdown&#39;</code> - selecting from a dropdown menu</li>
+</ul>
+<p>Output-only:</p>
+<ul>
+<li><code>&#39;label&#39;</code> - displaying labels or classification results</li>
+<li><code>&#39;plot&#39;</code> - displaying charts (e.g., Matplotlib or Plotly plots)</li>
+</ul>
+<p>Multiple inputs and outputs by putting types into a list, for example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">your_function</span>(<span class="params">input_text, language</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;A&quot;</span> + language + <span class="string">&quot;translation model&#x27;s output taking&quot;</span> + input_text + <span class="string">&quot;as input&quot;</span></span><br><span class="line"></span><br><span class="line">demo = gr.Interface(fn=your_function, inputs=[<span class="string">&quot;text&quot;</span>,<span class="string">&quot;text&quot;</span>], outputs=<span class="string">&quot;text&quot;</span>)</span><br><span class="line">demo.launch()  </span><br></pre></td></tr></table></figure>
+
+<p>After running the python script, we can Ctrl + Click <a target="_blank" rel="noopener" href="http://localhost:7860/">http://localhost:7860</a> from your terminal, then you can see a interface in our browser like this:</p>
+<p><img src="/.io//image_1.png" alt="Image"></p>
+<!-- Some settings for demo.launch (TBH, most of the time you probably don't need to set these up):
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">demo.launch(server_port=port) <span class="comment"># open in a browser on http://localhost:port</span></span><br><span class="line">demo.launch(share=<span class="literal">True</span>) <span class="comment"># generate a public URL</span></span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line">Now we have everything <span class="keyword">for</span> building a clear-enough UI <span class="keyword">for</span> <span class="built_in">any</span> target function. Let me give some example:</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">gr.Interface(fn=your_function, inputs=<span class="string">&quot;image&quot;</span>, outputs=<span class="string">&quot;label&quot;</span>) <span class="comment"># A classification model</span></span><br><span class="line">gr.Interface(fn=your_function, inputs=<span class="string">&quot;text&quot;</span>, outputs=<span class="string">&quot;image&quot;</span>) <span class="comment"># A Text-to-Image generation model</span></span><br><span class="line">gr.Interface(fn=your_function, inputs=[<span class="string">&quot;slider&quot;</span>,<span class="string">&quot;slider&quot;</span>,<span class="string">&quot;image&quot;</span>], outputs=<span class="string">&quot;image&quot;</span>) <span class="comment"># Segment Anything (SAM) with point prompt</span></span><br><span class="line">gr.Interface(fn=your_function, inputs=[<span class="string">&quot;image&quot;</span>,<span class="string">&quot;video&quot;</span>], outputs=<span class="string">&quot;video&quot;</span>) <span class="comment"># SAM2 with mask prompt</span></span><br></pre></td></tr></table></figure>
+
+<p>The only problem now is layouts, right? When the UI is complex, not having layouts can be uncomfortable. In fact, there are many other functions that cannot be implemented with gr.Interface, such as getting information about mouse clicks, triggering inference in a way other than a button, and generating a different number of output boxes depending on the input. When you find that the simple Interface function no longer meets your needs, you may want to try gr.Blocks.</p>
+<h1 id="Building-Better-Interfaces-with-gr-Blocks"><a href="#Building-Better-Interfaces-with-gr-Blocks" class="headerlink" title="Building Better Interfaces with gr.Blocks"></a>Building Better Interfaces with gr.Blocks</h1><p>One of the most noticeable changes when using <code>gr.Blocks</code> is the ability to design the layout. We can now have more control over how the UI is arranged. Let’s first implement the example we just saw with <code>gr.Interface</code> using <code>gr.Blocks</code>.</p>
+<h2 id="A-Simple-Gradio-Demo-with-gr-Blocks"><a href="#A-Simple-Gradio-Demo-with-gr-Blocks" class="headerlink" title="A Simple Gradio Demo with gr.Blocks"></a>A Simple Gradio Demo with gr.Blocks</h2><p>Here is a simple demo includes a text input, an output box, a submit button, and a clear button.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">your_function</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello &quot;</span> + name + <span class="string">&quot;!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clear_all</span>():</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    name = gr.Textbox(label=<span class="string">&quot;Name&quot;</span>)</span><br><span class="line">    output = gr.Textbox(label=<span class="string">&quot;Output Box&quot;</span>)</span><br><span class="line">    submit_btn = gr.Button(<span class="string">&quot;Submit&quot;</span>)</span><br><span class="line">    clear_btn = gr.Button(<span class="string">&quot;Clear&quot;</span>)</span><br><span class="line">    submit_btn.click(fn=your_function, inputs=name, outputs=output)</span><br><span class="line">    clear_btn.click(fn=clear_all, inputs=<span class="literal">None</span>, outputs=[name, output])</span><br><span class="line"></span><br><span class="line">demo.launch()</span><br></pre></td></tr></table></figure>
+
+<p>The UI looks like this:</p>
+<div style="text-align: center;">
+<figure>
+  <img src="Designing-UI-with-Gradio\image_2.png" width="450" alt="image_2">
+  <!-- <figcaption> fill caption </figcaption> -->
+
+
+
+<p>Does the layout look a bit different? Well, the basic functionality is the same as in the previous example. In this case, we define a <code>gr.Blocks</code>, which is like taking a sheet of A4 paper when you start working on an assignment. Then we create two <code>gr.Textbox</code> and two <code>gr.Button</code> on the paper, and they are automatically arranged within this block area.</p>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><p>You can design your layout using <code>gr.Column</code> and <code>gr.Row</code> to make it look like the UIs you see on Hugging Face. For example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    <span class="keyword">with</span> gr.Row():</span><br><span class="line">        text1 = gr.Textbox(label=<span class="string">&quot;t1&quot;</span>)</span><br><span class="line">        slider2 = gr.Textbox(label=<span class="string">&quot;s2&quot;</span>)</span><br><span class="line">        drop3 = gr.Dropdown([<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>], label=<span class="string">&quot;d3&quot;</span>)</span><br><span class="line">    <span class="keyword">with</span> gr.Row():</span><br><span class="line">        <span class="keyword">with</span> gr.Column(scale=<span class="number">1</span>, min_width=<span class="number">300</span>):</span><br><span class="line">            text1 = gr.Textbox(label=<span class="string">&quot;prompt 1&quot;</span>)</span><br><span class="line">            text2 = gr.Textbox(label=<span class="string">&quot;prompt 2&quot;</span>)</span><br><span class="line">            inbtw = gr.Button(<span class="string">&quot;Between&quot;</span>)</span><br><span class="line">            text4 = gr.Textbox(label=<span class="string">&quot;prompt 1&quot;</span>)</span><br><span class="line">            text5 = gr.Textbox(label=<span class="string">&quot;prompt 2&quot;</span>)</span><br><span class="line">        <span class="keyword">with</span> gr.Column(scale=<span class="number">2</span>, min_width=<span class="number">300</span>):</span><br><span class="line">            img1 = gr.Image(<span class="string">&quot;images/cheetah.jpg&quot;</span>)</span><br><span class="line">            btn = gr.Button(<span class="string">&quot;Go&quot;</span>)</span><br><span class="line"></span><br><span class="line">demo.launch()</span><br></pre></td></tr></table></figure>
+
+<div style="text-align: center;">
+<figure>
+  <img src="/.io//image_3.png" width="450" alt="image_3">
+  <!-- <figcaption> fill caption </figcaption> -->
+</figure>
+</div>
+
+<p>Like the following code, you can divide <code>gr.Blocks</code> into multiple horizontal sub-areas, and then further divide one of these sub-areas into multiple vertical sub-areas.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    <span class="keyword">with</span> gr.Row():</span><br><span class="line">        ...</span><br><span class="line">    <span class="keyword">with</span> gr.Row():</span><br><span class="line">        <span class="keyword">with</span> gr.Column():</span><br><span class="line">            ...</span><br><span class="line">    <span class="keyword">with</span> gr.Column():</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+
+<p>To limit the shape of a block, try:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> gr.Column(scale=<span class="number">2</span>, min_width=<span class="number">300</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Function-Trigger-Methods"><a href="#Function-Trigger-Methods" class="headerlink" title="Function Trigger Methods"></a>Function Trigger Methods</h2><p>Although my favorite is Button, there are other ways to trigger your function. You can try using an event listener or triggering the function by pressing ENTER. The former can monitor changes in the input box in real-time, while the latter replaces the button with a keyboard key.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Button  </span></span><br><span class="line">btn = gr.Button(<span class="string">&quot;Submit&quot;</span>)</span><br><span class="line">submit_btn.click(fn=your_function, inputs=<span class="built_in">input</span>, outputs=output)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Event listener  </span></span><br><span class="line">inp = gr.Textbox()</span><br><span class="line">inp.change(welcome, inp, out)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x27;ENTER&#x27;  </span></span><br><span class="line">inp = gr.Textbox(label=<span class="string">&quot;Input&quot;</span>)</span><br><span class="line">inp.submit(greet, name, [output, trigger])</span><br></pre></td></tr></table></figure>
+
+<p>You can also set multiple triggers using <code>gr.Blocks()</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gr.on(triggers=[name.submit, greet_btn.click], fn=greet, inputs=name, outputs=output).then(clear_name, outputs=[name])</span><br></pre></td></tr></table></figure>
+
+<p>You may use <code>.then(clear_name, outputs=[name])</code> to call a second function after ‘greet’ has been triggered. Here, <code>outputs=[name]</code> means that the return value will update the “name” input box. The <code>.then()</code> operation can actually be written inside <code>greet</code>, making <code>greet</code> look cleaner, but it is not mandatory.</p>
+<h2 id="Controling-the-visibility-of-a-sub-block"><a href="#Controling-the-visibility-of-a-sub-block" class="headerlink" title="Controling the visibility of a sub-block"></a>Controling the visibility of a sub-block</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    name_box = gr.Textbox(label=<span class="string">&quot;Name&quot;</span>)</span><br><span class="line">    age_box = gr.Number(label=<span class="string">&quot;Age&quot;</span>, minimum=<span class="number">0</span>, maximum=<span class="number">100</span>)</span><br><span class="line">    symptoms_box = gr.CheckboxGroup([<span class="string">&quot;Cough&quot;</span>, <span class="string">&quot;Fever&quot;</span>, <span class="string">&quot;Runny Nose&quot;</span>])</span><br><span class="line">    submit_btn = gr.Button(<span class="string">&quot;Submit&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> gr.Column(visible=<span class="literal">False</span>) <span class="keyword">as</span> output_col:</span><br><span class="line">        diagnosis_box = gr.Textbox(label=<span class="string">&quot;Diagnosis&quot;</span>)</span><br><span class="line">        patient_summary_box = gr.Textbox(label=<span class="string">&quot;Patient Summary&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">submit</span>(<span class="params">name, age, symptoms</span>):</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            submit_btn: gr.Button(visible=<span class="literal">False</span>),</span><br><span class="line">            output_col: gr.Column(visible=<span class="literal">True</span>),</span><br><span class="line">            diagnosis_box: <span class="string">&quot;covid&quot;</span> <span class="keyword">if</span> <span class="string">&quot;Cough&quot;</span> <span class="keyword">in</span> symptoms <span class="keyword">else</span> <span class="string">&quot;flu&quot;</span>,</span><br><span class="line">            patient_summary_box: <span class="string">f&quot;<span class="subst">&#123;name&#125;</span>, <span class="subst">&#123;age&#125;</span> y/o&quot;</span>,</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    submit_btn.click(</span><br><span class="line">        submit,</span><br><span class="line">        [name_box, age_box, symptoms_box],</span><br><span class="line">        [submit_btn, diagnosis_box, patient_summary_box, output_col],</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">demo.launch()</span><br></pre></td></tr></table></figure>
+
+<p>In this example, clicking the <code>submit_btn</code> triggers the <code>submit</code> function. The change in visibility is specified as one of the outputs.<br>You can modify the visibility of individual components or an entire block. If it applies to a block, you need to define a variable for it when creating the block.</p>
+<h2 id="Determine-the-Output-Boxes-Based-on-Input"><a href="#Determine-the-Output-Boxes-Based-on-Input" class="headerlink" title="Determine the Output Boxes Based on Input"></a>Determine the Output Boxes Based on Input</h2><p>If you are unsure how many outputs will be generated before entering your inputs, you can use <code>gr.render()</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    input_text = gr.Textbox(label=<span class="string">&quot;Input&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @gr.render(<span class="params">inputs=input_text</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show_split</span>(<span class="params">text</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(text) == <span class="number">0</span>:</span><br><span class="line">            gr.Markdown(<span class="string">&quot;## No Input Provided&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> letter <span class="keyword">in</span> text:</span><br><span class="line">                gr.Textbox(letter)</span><br><span class="line"></span><br><span class="line">demo.launch()</span><br></pre></td></tr></table></figure>
+
+<p><code>@gr.render(inputs=input_text)</code> is actually listening to the change in <code>input_text</code> if there is no <code>trigger</code> defined. You can use this listening mechanism to create some interesting designs. For example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    text_count = gr.State(<span class="number">1</span>)</span><br><span class="line">    add_btn = gr.Button(<span class="string">&quot;Add Box&quot;</span>)</span><br><span class="line">    add_btn.click(<span class="keyword">lambda</span> x: x + <span class="number">1</span>, text_count, text_count)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @gr.render(<span class="params">inputs=text_count</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">render_count</span>(<span class="params">count</span>):</span><br><span class="line">        boxes = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(count):</span><br><span class="line">            box = gr.Textbox(key=i, label=<span class="string">f&quot;Box <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">            boxes.append(box)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">*args</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot; &quot;</span>.join(args)</span><br><span class="line"></span><br><span class="line">        merge_btn.click(merge, boxes, output)</span><br><span class="line"></span><br><span class="line">    merge_btn = gr.Button(<span class="string">&quot;Merge&quot;</span>)</span><br><span class="line">    output = gr.Textbox(label=<span class="string">&quot;Merged Output&quot;</span>)</span><br><span class="line"></span><br><span class="line">demo.launch()</span><br></pre></td></tr></table></figure>
+
+<p>Here, <code>gr.State()</code> allows you to listen to events in the state variable. If you are adding a new box through <code>gr.render()</code> but have already input something into the existing boxes, remember to set <code>key=</code> to maintain the content in the displayed boxes.</p>
+<h2 id="Provide-Some-Examples-on-the-UI"><a href="#Provide-Some-Examples-on-the-UI" class="headerlink" title="Provide Some Examples on the UI"></a>Provide Some Examples on the UI</h2><p>If you want to show users how to use your UI, you can use <code>gr.Examples()</code> to provide pre-filled example inputs. This helps users understand how to interact with your interface more effectively.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculator</span>(<span class="params">num1, operation, num2</span>):</span><br><span class="line">    <span class="keyword">if</span> operation == <span class="string">&quot;add&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> num1 + num2</span><br><span class="line">    <span class="keyword">elif</span> operation == <span class="string">&quot;subtract&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> num1 - num2</span><br><span class="line">    <span class="keyword">elif</span> operation == <span class="string">&quot;multiply&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> num1 * num2</span><br><span class="line">    <span class="keyword">elif</span> operation == <span class="string">&quot;divide&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> num1 / num2</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    <span class="keyword">with</span> gr.Row():</span><br><span class="line">        <span class="keyword">with</span> gr.Column():</span><br><span class="line">            num_1 = gr.Number(value=<span class="number">4</span>, label=<span class="string">&quot;Number 1&quot;</span>)</span><br><span class="line">            operation = gr.Radio([<span class="string">&quot;add&quot;</span>, <span class="string">&quot;subtract&quot;</span>, <span class="string">&quot;multiply&quot;</span>, <span class="string">&quot;divide&quot;</span>], label=<span class="string">&quot;Operation&quot;</span>)</span><br><span class="line">            num_2 = gr.Number(value=<span class="number">0</span>, label=<span class="string">&quot;Number 2&quot;</span>)</span><br><span class="line">            submit_btn = gr.Button(value=<span class="string">&quot;Calculate&quot;</span>)</span><br><span class="line">        <span class="keyword">with</span> gr.Column():</span><br><span class="line">            result = gr.Number(label=<span class="string">&quot;Result&quot;</span>)</span><br><span class="line"></span><br><span class="line">    submit_btn.click(</span><br><span class="line">        calculator, inputs=[num_1, operation, num_2], outputs=[result], api_name=<span class="literal">False</span></span><br><span class="line">    )</span><br><span class="line">    examples = gr.Examples(</span><br><span class="line">        examples=[</span><br><span class="line">            [<span class="number">5</span>, <span class="string">&quot;add&quot;</span>, <span class="number">3</span>],</span><br><span class="line">            [<span class="number">4</span>, <span class="string">&quot;divide&quot;</span>, <span class="number">2</span>],</span><br><span class="line">            [-<span class="number">4</span>, <span class="string">&quot;multiply&quot;</span>, <span class="number">2.5</span>],</span><br><span class="line">            [<span class="number">0</span>, <span class="string">&quot;subtract&quot;</span>, <span class="number">1.2</span>],</span><br><span class="line">        ],</span><br><span class="line">        inputs=[num_1, operation, num_2],</span><br><span class="line">        label=<span class="string">&quot;Examples&quot;</span></span><br><span class="line">    )</span><br><span class="line">demo.launch(show_api=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<div style="text-align: center;">
+<figure>
+  <img src="/.io//image_4.png" width="450" alt="image_4">
+  <!-- <figcaption> fill caption </figcaption> -->
+</figure>
+</div>
+
+<p>In this example, <code>gr.Examples()</code> provides a set of predefined input combinations. Users can click on any example to automatically fill the input boxes with those values. This feature makes it easier for users to test different scenarios and understand how the calculator works.</p>
+<h2 id="Select-a-Point-on-the-gr-Image-or-gr-Dataframe"><a href="#Select-a-Point-on-the-gr-Image-or-gr-Dataframe" class="headerlink" title="Select a Point on the gr.Image or gr.Dataframe"></a>Select a Point on the gr.Image or gr.Dataframe</h2><p>If you want to click on an image to get the coordinates of where you clicked relative to the image, you can use <code>gr.select()</code> to achieve this.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_select_coords</span>(<span class="params">img, evt: gr.SelectData</span>):</span><br><span class="line">    cord_x = evt.index[<span class="number">0</span>]</span><br><span class="line">    cord_y = evt.index[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> cord_x, cord_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">    first_img = gr.Image(label=<span class="string">&quot;First Image&quot;</span>)</span><br><span class="line">    x_cord = gr.Textbox(label=<span class="string">&quot;X Coordinate&quot;</span>)</span><br><span class="line">    y_cord = gr.Textbox(label=<span class="string">&quot;Y Coordinate&quot;</span>)</span><br><span class="line">    first_img.select(get_select_coords, [first_img], [x_cord, y_cord])</span><br></pre></td></tr></table></figure>
+
+<p>Similarly, <code>gr.Dataframe</code> is a table-format component that also supports the <code>select</code> method.</p>
+<h2 id="Summary-of-Useful-Functions-for-gr-Blocks"><a href="#Summary-of-Useful-Functions-for-gr-Blocks" class="headerlink" title="Summary of Useful Functions for gr.Blocks"></a>Summary of Useful Functions for <code>gr.Blocks</code></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gr.Row(scale=<span class="number">1</span>, min_width=<span class="number">300</span>) </span><br><span class="line">gr.Column() </span><br><span class="line">gr.Column(visible=<span class="literal">False</span>) <span class="comment"># Hide a block unless a trigger change the state of &#x27;visible&#x27; </span></span><br><span class="line">gr.select() <span class="comment"># Returns the interaction information when interacting with a variable of a certain type </span></span><br><span class="line">gr.Tab((<span class="string">&quot;Next Page&quot;</span>)) <span class="comment"># Select one of the multiple Tabs that the current UI displays. </span></span><br><span class="line">gr.Accordion(<span class="string">&quot;Open for More!&quot;</span>, <span class="built_in">open</span>=<span class="literal">False</span>) <span class="comment"># A block that can be hidden </span></span><br><span class="line">gr.render() <span class="comment"># Generate boxes according to your inputs </span></span><br><span class="line">gr.Examples() <span class="comment"># Display input examples, support clicking examples to fill in the input</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Development/" rel="tag">Development</a></li></ul>
+
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'loveaiblog';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/04/mask2rle/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Convert Mask from Numpy Array to RLE (Run-Length Encoding) for CVAT
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Designing-UI-with-Gradio"><span class="nav-number">1.</span> <span class="nav-text">Designing UI with Gradio</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start-with-gr-Interface"><span class="nav-number">1.1.</span> <span class="nav-text">Quick Start with gr.Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout"><span class="nav-number">1.2.</span> <span class="nav-text">Layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Trigger-Methods"><span class="nav-number">1.3.</span> <span class="nav-text">Function Trigger Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controling-the-visibility-of-a-sub-block"><span class="nav-number">1.4.</span> <span class="nav-text">Controling the visibility of a sub-block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Determine-the-Output-Boxes-Based-on-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Determine the Output Boxes Based on Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Provide-Some-Examples-on-the-UI"><span class="nav-number">1.6.</span> <span class="nav-text">Provide Some Examples on the UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Select-a-Point-on-the-gr-Image-or-gr-Dataframe"><span class="nav-number">1.7.</span> <span class="nav-text">Select a Point on the gr.Image or gr.Dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-Useful-Functions-for-gr-Blocks"><span class="nav-number">1.8.</span> <span class="nav-text">Summary of Useful Functions for gr.Blocks</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2025 Zihan&#39;s Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              Total Visitors: <span id="busuanzi_value_site_uv"></span> 
+              Total Views: <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
