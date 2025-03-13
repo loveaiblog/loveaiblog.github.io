@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Auto Video Tracking | Zihan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="DevelopmentAlgorithm" />
+  
+  
+  
+  
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Auto Video Tracking">
+<meta property="og:url" content="https://loveaiblog.github.io/2025/03/13/auto-video-tracking/index.html">
+<meta property="og:site_name" content="Zihan&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-13T13:50:48.000Z">
+<meta property="article:modified_time" content="2025-03-13T14:41:37.487Z">
+<meta property="article:author" content="Zihan Liu">
+<meta property="article:tag" content="Development">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zihan&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Zihan&#39;s Blog" rel="home"> Zihan&#39;s Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">A diary of AI development and learning activities.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-auto-video-tracking" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Auto Video Tracking
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2025/03/13/auto-video-tracking/" class="article-date">
+	  <time datetime="2025-03-13T13:50:48.000Z" itemprop="datePublished">March 13, 2025</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  Total Views for This Post: <span id="busuanzi_value_page_pv"></span>
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Autonomous-Video-Tracking-Segmentation"><a href="#Autonomous-Video-Tracking-Segmentation" class="headerlink" title="Autonomous Video Tracking &amp; Segmentation"></a>Autonomous Video Tracking &amp; Segmentation</h1><p><a target="_blank" rel="noopener" href="https://ai.meta.com/sam2/">SAM2 (Segment Anything 2)</a> introduces a user-friendly human-computer interaction paradigm, enabling users to generate full video mask trajectories through simple or complex prompts. This innovation dramatically reduces video annotation labor from per-frame instance labeling to single-annotation tracking, significantly compressing time costs for video data preparation. To achieve fully automated annotation, I think developing automatic prompt generation systems for SAM2 worth a shot.</p>
+<p><video src="bedroom.mp4" width="70%" height="70%" controls="controls"></video></p>
+<p>SAM2 supports mask generation using points&#x2F;bounding boxes on specified frames, as well as video inference through points&#x2F;boxes&#x2F;mask prompts. Among these three approaches, I typically first obtain initial masks via SAM using point&#x2F;box prompts, then feed these masks into SAM2 for temporal propagation. When comparing point vs box prompting, bounding boxes prove more automation-friendly. Point-based methods inherently require human-curated positive&#x2F;negative points, demanding interactive visualization. While box-generated masks may lack precision, automated box generation remains comparatively simpler. For users possessing substantial domain-specific segmentation data, training custom YOLO models for detection&#x2F;segmentation is advisable. However, in most zero-shot application scenarios, existing generalized models are all I have.</p>
+<h2 id="Object-Detection-Models"><a href="#Object-Detection-Models" class="headerlink" title="Object Detection Models"></a>Object Detection Models</h2><p>Now let’s discuss how to combine detection networks with SAM2 for video inference. Among detection models, I recommend <a target="_blank" rel="noopener" href="https://huggingface.co/spaces/merve/Grounding_DINO_demo">GroundingDINO</a> and <a target="_blank" rel="noopener" href="https://huggingface.co/spaces/gokaygokay/Florence-2">Florence-2-large-ft</a>. Notably, Florence-2 offers multi-functional capabilities including object detection, grounding, and caption+grounding. Through empirical testing, I found GroundingDINO outperforms Florence-2 in grounding tasks, thus primarily utilizing Florence-2 for detection.</p>
+<p>The critical distinction lies in GroundingDINO’s requirement for text captions as prompts. Several examples indicate optimal performance when using single-keyword captions formatted as ‘keyword1,keyword2,…’ - this approach maintains detection stability while allowing multi-instance capture. However, GroundingDINO exhibits high sensitivity to hyperparameter tuning. Excessive box thresholds increase missed detections, while insufficient thresholds boost false positives. Parameter optimization must consider image quality and model generalization - in layman’s terms, expect substantial trial-and-error.</p>
+<h2 id="SAM2-Integration"><a href="#SAM2-Integration" class="headerlink" title="SAM2 Integration"></a>SAM2 Integration</h2><p>Having established frame-wise bounding box generation capabilities, a basic implementation involves acquiring mask prompts from the first frame and tracking instances throughout the video. Reference implementations include <a target="_blank" rel="noopener" href="https://huggingface.co/spaces/SkalskiP/florence-sam">Florence2 + SAM2</a> and <a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/Grounded-SAM-2">Grounded-SAM-2</a>. These solutions suffice for tracking single persistent instances (e.g., camera-followed objects). However, dynamic scenes requiring detection of emerging objects demand more sophisticated approaches.</p>
+<p>For comprehensive video instance tracking, I cannot rely solely on initial frame detections. My goal is full automation rather than assisted annotation, eliminating real-time constraints. Here’s how I think about it:</p>
+<ol>
+<li>Require per-frame detection with novel instance identification</li>
+<li>Generate initial frame masks, then detect new instances in subsequent frames</li>
+<li>Determine novelty through mask overlap analysis between detections and existing instances</li>
+<li>Implement quality control to filter SAM’s fragmented outputs (familiar users recognize these artifacts)</li>
+<li>Address detection inconsistencies - new boxes might represent previously missed instances</li>
+<li>Enable temporal backward propagation since SAM2 lacks native backward inference</li>
+<li>Implement duplicate prevention through mask overlap checks and quality filtering</li>
+</ol>
+<p>Thus, the implementation logic unfolds as follows:</p>
+<ol>
+<li>Frame extraction from video</li>
+<li>Per-frame object detection</li>
+<li>Iterative processing from initial frame:</li>
+<li>Convert current frame bounding boxes to masks via SAM with post-processing</li>
+<li>Identify novel instances through mask overlap analysis</li>
+<li>Feed masks to SAM2 for video propagation</li>
+<li>Reinitialize video predictor with reversed frame other and repropagate for backward propagation</li>
+<li>Deduplicate trajectories through overlap checks</li>
+<li>Apply post-processing and update master mask repository</li>
+</ol>
+<p>Here is the core implementation (using Florence 2 as an example):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoProcessor, AutoModelForCausalLM</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># Functions for Florence 2 Inference</span></span><br><span class="line">models = &#123;</span><br><span class="line">    <span class="string">&#x27;microsoft/Florence-2-large-ft&#x27;</span>: AutoModelForCausalLM.from_pretrained(<span class="string">&#x27;/data/zihan/florence2_sam2/Florence-2-large-ft&#x27;</span>, trust_remote_code=<span class="literal">True</span>).to(<span class="string">&quot;cuda&quot;</span>).<span class="built_in">eval</span>(),</span><br><span class="line">&#125;</span><br><span class="line">processors = &#123;</span><br><span class="line">    <span class="string">&#x27;microsoft/Florence-2-large-ft&#x27;</span>: AutoProcessor.from_pretrained(<span class="string">&#x27;/data/zihan/florence2_sam2/Florence-2-large-ft&#x27;</span>, trust_remote_code=<span class="literal">True</span>),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@spaces.GPU</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_example</span>(<span class="params">task_prompt, image, text_input=<span class="literal">None</span>, model_id=<span class="string">&#x27;microsoft/Florence-2-large&#x27;</span></span>):</span><br><span class="line">    model = models[model_id]</span><br><span class="line">    processor = processors[model_id]</span><br><span class="line">    <span class="keyword">if</span> text_input <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        prompt = task_prompt</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        prompt = task_prompt + text_input</span><br><span class="line">    inputs = processor(text=prompt, images=image, return_tensors=<span class="string">&quot;pt&quot;</span>).to(<span class="string">&quot;cuda&quot;</span>)</span><br><span class="line">    generated_ids = model.generate(</span><br><span class="line">        input_ids=inputs[<span class="string">&quot;input_ids&quot;</span>],</span><br><span class="line">        pixel_values=inputs[<span class="string">&quot;pixel_values&quot;</span>],</span><br><span class="line">        max_new_tokens=<span class="number">1048</span>,</span><br><span class="line">        early_stopping=<span class="literal">False</span>,</span><br><span class="line">        do_sample=<span class="literal">False</span>,</span><br><span class="line">        num_beams=<span class="number">5</span>,</span><br><span class="line">    )</span><br><span class="line">    generated_text = processor.batch_decode(generated_ids, skip_special_tokens=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line">    parsed_answer = processor.post_process_generation(</span><br><span class="line">        generated_text,</span><br><span class="line">        task=task_prompt,</span><br><span class="line">        image_size=(image.width, image.height)</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> parsed_answer</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_image</span>(<span class="params">image, model_id=<span class="string">&#x27;microsoft/Florence-2-large-ft&#x27;</span></span>):</span><br><span class="line">    image = Image.fromarray(image)</span><br><span class="line">    task_prompt = <span class="string">&#x27;&lt;OD&gt;&#x27;</span></span><br><span class="line">    results = run_example(task_prompt, image, model_id=model_id)</span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">florence_inf</span>(<span class="params">video</span>):</span><br><span class="line">    cap = cv2.VideoCapture(video)</span><br><span class="line">    frame_bboxes = []</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">        ret, frame = cap.read()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ret:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)</span><br><span class="line">        output_text = process_image(frame)</span><br><span class="line">        bboxes = output_text[<span class="string">&#x27;&lt;OD&gt;&#x27;</span>][<span class="string">&#x27;bboxes&#x27;</span>]</span><br><span class="line">        frame_bboxes.append(bboxes)</span><br><span class="line">    cap.release()</span><br><span class="line">    <span class="keyword">return</span> frame_bboxes,<span class="string">&#x27;Florence-2 OD has done its job ξ( ✿＞◡❛)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">video2images</span>(<span class="params">video, output_folder</span>):</span><br><span class="line">    <span class="comment"># Read the video and save the images to a path</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">crashed</span>(<span class="params">mask</span>):</span><br><span class="line">    <span class="comment"># Check if the masked region is connected</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">overlapped</span>(<span class="params">exist_masks, new_mask</span>):</span><br><span class="line">    <span class="comment"># Check if new mask is overlaped with existing masks</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fill_small_bubbles</span>(<span class="params">mask</span>):</span><br><span class="line">    <span class="comment"># Find and fill blank region inside a mask</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">median_filter</span>(<span class="params">mask</span>):</span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sam2_inference</span>(<span class="params">images_path, frame_bboxes, save_dir_name, vis_frame_stride=<span class="number">1</span></span>):</span><br><span class="line">    <span class="comment"># Set checkpoints, device, paths, etc.</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Initialize SAM2 for image and video predictor</span></span><br><span class="line">    <span class="keyword">from</span> sam2.build_sam <span class="keyword">import</span> build_sam2_video_predictor, build_sam2</span><br><span class="line">    <span class="keyword">from</span> sam2.sam2_image_predictor <span class="keyword">import</span> SAM2ImagePredictor</span><br><span class="line">    video_predictor = build_sam2_video_predictor(model_cfg, sam2_checkpoint, device=device)</span><br><span class="line">    inference_state = video_predictor.init_state(video_path=images_path)</span><br><span class="line">    sam2_model = build_sam2(model_cfg, sam2_checkpoint, device=device)</span><br><span class="line">    image_predictor = SAM2ImagePredictor(sam2_model)</span><br><span class="line"></span><br><span class="line">    video_segments = &#123;&#125; <span class="comment"># Saved masks</span></span><br><span class="line">    <span class="comment"># The loop starts</span></span><br><span class="line">    <span class="keyword">for</span> ann_frame_idx <span class="keyword">in</span> <span class="built_in">range</span>(num_frames):</span><br><span class="line">        video_predictor.reset_state(inference_state)</span><br><span class="line">        <span class="comment"># Get predicted masks from boxes through image predictor</span></span><br><span class="line">        img_predictor.set_image(image)</span><br><span class="line">        masks_all, _, _ = img_predictor.predict(</span><br><span class="line">            point_coords=<span class="literal">None</span>,</span><br><span class="line">            point_labels=<span class="literal">None</span>,</span><br><span class="line">            box=bboxes,</span><br><span class="line">            multimask_output=<span class="literal">False</span>,</span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># post-processing</span></span><br><span class="line">        masks = []</span><br><span class="line">        <span class="keyword">if</span> ann_frame_idx <span class="keyword">in</span> video_segments:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(masks_all)):</span><br><span class="line">                <span class="keyword">if</span> overlapped(video_segments[ann_frame_idx], masks_all[i]) <span class="keyword">or</span> crashed(masks_all[i]):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    masks.append(masks_all[i])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Add masks to the video predictor and video propagation</span></span><br><span class="line">        <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Reverse the video</span></span><br><span class="line">        inference_state[<span class="string">&#x27;images&#x27;</span>] = torch.flip(inference_state[<span class="string">&#x27;images&#x27;</span>], dims=[<span class="number">0</span>])</span><br><span class="line">        predictor.reset_state(inference_state)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Add masks to the video predictor and video propagation</span></span><br><span class="line">        <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Reserse the video again</span></span><br><span class="line">        inference_state[<span class="string">&#x27;images&#x27;</span>] = torch.flip(inference_state[<span class="string">&#x27;images&#x27;</span>], dims=[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Post-process all the generated masks and save</span></span><br><span class="line">    <span class="keyword">for</span> out_frame_idx <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(frame_names), vis_frame_stride):</span><br><span class="line">        <span class="keyword">for</span> out_obj_id, out_mask <span class="keyword">in</span> video_segments[out_frame_idx].items():</span><br><span class="line">            <span class="comment"># Check if the output mask should be added</span></span><br><span class="line">            <span class="keyword">if</span> crashed(out_mask) <span class="keyword">or</span> overlapped(exist_masks, out_mask):</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            out_mask = median_filter(out_mask)</span><br><span class="line">            out_mask = fill_small_bubbles(out_mask)</span><br><span class="line">            <span class="comment"># Visualization and write</span></span><br><span class="line">            <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">images2video</span>(<span class="params">image_folder, output_video_path, fps=<span class="number">24</span></span>):</span><br><span class="line">    <span class="comment"># Frame to video conversion logic</span></span><br><span class="line">    <span class="comment"># ... (skipped for brevity) ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sam2_video</span>(<span class="params">input_video, florence_bboxes</span>):</span><br><span class="line">    video2images(...)</span><br><span class="line">    sam2_inference(...)</span><br><span class="line">    images2video(...)</span><br><span class="line">    <span class="keyword">return</span> output_video, output_mask</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">        </span><br><span class="line">        gr.Markdown(<span class="string">&quot;# Florence-2 + SAM2&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> gr.Row():</span><br><span class="line">            <span class="keyword">with</span> gr.Column():</span><br><span class="line">                input_video = gr.Video(<span class="built_in">format</span>=<span class="string">&#x27;mp4&#x27;</span>,label=<span class="string">&#x27;Source Video&#x27;</span>)</span><br><span class="line">                florence_bboxes = gr.State() </span><br><span class="line">                terminal = gr.Textbox(label=<span class="string">&#x27;Pseudo Terminal&#x27;</span>)</span><br><span class="line">            <span class="keyword">with</span> gr.Column():</span><br><span class="line">                output_video = gr.Video(<span class="built_in">format</span>=<span class="string">&#x27;mp4&#x27;</span>,label=<span class="string">&quot;SAM2 Vis&quot;</span>,show_download_button=<span class="literal">True</span>)</span><br><span class="line">                output_mask = gr.Video(<span class="built_in">format</span>=<span class="string">&#x27;mp4&#x27;</span>,label=<span class="string">&quot;Mask&quot;</span>,show_download_button=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        input_video.upload(florence_inf, [input_video], [florence_bboxes,terminal])</span><br><span class="line">        terminal.change(sam2_video, [input_video, florence_bboxes], [output_video, output_mask])</span><br><span class="line"></span><br><span class="line">    demo.launch(server_port=your_port)</span><br></pre></td></tr></table></figure>
+
+<p>Example of Florence 2 + SAM 2</p>
+<p><video src="bedroom_florence2.mp4" width="70%" height="70%" controls="controls"></video></p>
+<p>Example of GroundingDINO + SAM 2：</p>
+<p><video src="bedroom_gdino.mp4" width="70%" height="70%" controls="controls"></video></p>
+<p>For any further requests, send me an email to <a href="mailto:&#x7a;&#105;&#104;&#97;&#x6e;&#x6c;&#x69;&#117;&#64;&#x68;&#x6f;&#116;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;">zihanliu@hotmail.com</a>.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Development/" rel="tag">Development</a></li></ul>
+
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'loveaiblog';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/03/05/sam2gradio/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Visualized SAM2 Video Segmentation with Gradio</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Autonomous-Video-Tracking-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">Autonomous Video Tracking &amp; Segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Detection-Models"><span class="nav-number">1.1.</span> <span class="nav-text">Object Detection Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SAM2-Integration"><span class="nav-number">1.2.</span> <span class="nav-text">SAM2 Integration</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2025 Zihan&#39;s Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              Total Visitors: <span id="busuanzi_value_site_uv"></span> 
+              Total Views: <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
