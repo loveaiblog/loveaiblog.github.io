@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Why Can Grounding DINO Achieve Zero-Shot Object Detection? | Zihan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Algorithm" />
+  
+  
+  
+  
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Why Can Grounding DINO Achieve Zero-Shot Object Detection?">
+<meta property="og:url" content="https://loveaiblog.github.io/2025/03/25/groundingdino/index.html">
+<meta property="og:site_name" content="Zihan&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://loveaiblog.github.io/2025/03/25/groundingdino/image1.PNG">
+<meta property="og:image" content="https://loveaiblog.github.io/2025/03/25/groundingdino/image2.PNG">
+<meta property="article:published_time" content="2025-03-25T04:57:38.000Z">
+<meta property="article:modified_time" content="2025-03-25T04:59:49.349Z">
+<meta property="article:author" content="Zihan Liu">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loveaiblog.github.io/2025/03/25/groundingdino/image1.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="Zihan&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Zihan&#39;s Blog" rel="home"> Zihan&#39;s Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">A diary of AI development and learning activities.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-groundingdino" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Why Can Grounding DINO Achieve Zero-Shot Object Detection?
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2025/03/25/groundingdino/" class="article-date">
+	  <time datetime="2025-03-25T04:57:38.000Z" itemprop="datePublished">March 25, 2025</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  Total Views for This Post: <span id="busuanzi_value_page_pv"></span>
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/GroundingDINO">Grounding DINO</a> has recently gained popularity for integrating text-to-image alignment into a DETR-based object detection (OD) model. While it is neither the first model to introduce grounded object detection nor the first to propose a Transformer-based end-to-end OD approach, it achieves competitive performance by simply combining <a target="_blank" rel="noopener" href="https://github.com/microsoft/GLIP">GLIP</a> and <a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/DINO">DINO</a>.  </p>
+<p>In this post, I’ll walk you through the design of Grounding DINO and explain why it excels at zero-shot object detection.  </p>
+<h2 id="Model-Structure"><a href="#Model-Structure" class="headerlink" title="Model Structure"></a>Model Structure</h2><p><img src="image1.PNG" alt="image1">  </p>
+<p>The figure above, taken from the published paper, provides an <strong>overview of Grounding DINO</strong>, highlighting two key components. Let’s start with the input: for a grounded OD model, there are two types of inputs—an <strong>image</strong> and a <strong>text prompt</strong>.  </p>
+<p>Grounding DINO supports text prompts in two formats: <strong>a full sentence</strong> or <strong>a set of keywords</strong>. Based on my experience, it performs <strong>better</strong> when using <strong>keywords</strong>. As stated in the paper, when Grounding DINO detects that the input is a full sentence, it processes the text through a filtering block to extract keywords. However, this means some important information might be lost.  </p>
+<p>For example, if we provide an image and the text prompt “cat, person, mouse”, the first step is feature extraction using <strong>pretrained backbones</strong>. The text backbone is <strong>BERT</strong>, while the image backbone is <strong>Swin Transformer</strong>. The raw feature dimensions are as follows:</p>
+<ul>
+<li><strong>Text feature</strong>: <em>(sequence length, d)</em>  </li>
+<li><strong>Image feature</strong>: <em>(H, W, d)</em></li>
+</ul>
+<h3 id="Feature-Enhancer"><a href="#Feature-Enhancer" class="headerlink" title="Feature Enhancer"></a>Feature Enhancer</h3><p>Next, these raw features are fed into the feature enhancer, which consists of multiple Feature Enhancer Layers (shown in the bottom right of the figure). Within each layer, there is:</p>
+<ul>
+<li><strong>Deformable self-attention</strong> – a more computationally efficient version of standard self-attention.  </li>
+<li><strong>Image-to-text cross-attention</strong>, which takes the <strong>tokenized image features as queries (Q)</strong> and outputs a feature of shape <strong>(H × W, d)</strong> (and vice versa for text-to-image).</li>
+</ul>
+<h3 id="Language-Guided-Query-Selection"><a href="#Language-Guided-Query-Selection" class="headerlink" title="Language-Guided Query Selection"></a>Language-Guided Query Selection</h3><p>The Language-Guided Query Selection module is illustrated in the figure below. Essentially, it <strong>selects the top-k image tokens that are most relevant to the text tokens</strong>, refining the alignment between text and image features.  </p>
+<p><img src="image2.PNG" alt="image2">  </p>
+<h3 id="Cross-Modality-Decoder"><a href="#Cross-Modality-Decoder" class="headerlink" title="Cross-Modality Decoder"></a>Cross-Modality Decoder</h3><p>Each layer in the Cross-Modality Decoder, shown in the overview, is a <strong>stacked block</strong> consisting of:</p>
+<ul>
+<li><strong>Self-attention</strong>  </li>
+<li><strong>Two cross-attention layers</strong>  </li>
+<li><strong>A feed-forward network (FFN)</strong></li>
+</ul>
+<p>Each <strong>output token</strong> represents a <strong>bounding box</strong> along with a <strong>feature vector</strong>, which is then used to ground the detection to the text prompt.  </p>
+<h2 id="Supervision"><a href="#Supervision" class="headerlink" title="Supervision"></a>Supervision</h2><p>The <strong>loss function</strong> in Grounding DINO consists of <strong>two main components</strong>:  </p>
+<ol>
+<li><strong>Localization loss</strong>  </li>
+<li><strong>Alignment loss</strong></li>
+</ol>
+<h3 id="Localization-Loss"><a href="#Localization-Loss" class="headerlink" title="Localization Loss"></a>Localization Loss</h3><p>The <strong>localization loss</strong> is a <strong>weighted sum</strong> of:</p>
+<ul>
+<li><strong>L1 loss</strong> – Measures the absolute difference between the predicted and ground-truth box positions.  </li>
+<li><strong>GIOU loss</strong> – Solve the 0 gradient problem of <strong>intersection-over-union (IoU)</strong> when the predicted and ground-truth boxes are not intersected.</li>
+</ul>
+<p>IOU loss can produce gradients for boxes because the intersection and union of bounding boxes are computed using <strong>(x, y, w, h)</strong>, e.g., <strong>x - w&#x2F;2</strong>.  </p>
+<h3 id="Alignment-Loss"><a href="#Alignment-Loss" class="headerlink" title="Alignment Loss"></a>Alignment Loss</h3><p>The alignment loss is an <strong>InfoNCE (contrastive) loss</strong>, designed to associate bounding boxes with their corresponding text prompts. It works by:</p>
+<ul>
+<li>Forming <strong>positive sample pairs</strong> between bounding boxes and their corresponding class tokens.  </li>
+<li>Forming <strong>negative sample pairs</strong> between bounding boxes and all other tokens.</li>
+</ul>
+<p>This alignment loss serves as a <strong>classifier</strong> for grounding during the inference phase.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li></ul>
+
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'loveaiblog';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/03/18/sam2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How the Segment Anything Model 2 (SAM2) Works at a High Level</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Structure"><span class="nav-number">1.</span> <span class="nav-text">Model Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-Enhancer"><span class="nav-number">1.1.</span> <span class="nav-text">Feature Enhancer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-Guided-Query-Selection"><span class="nav-number">1.2.</span> <span class="nav-text">Language-Guided Query Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Modality-Decoder"><span class="nav-number">1.3.</span> <span class="nav-text">Cross-Modality Decoder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Supervision"><span class="nav-number">2.</span> <span class="nav-text">Supervision</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Localization-Loss"><span class="nav-number">2.1.</span> <span class="nav-text">Localization Loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alignment-Loss"><span class="nav-number">2.2.</span> <span class="nav-text">Alignment Loss</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2025 Zihan&#39;s Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              Total Visitors: <span id="busuanzi_value_site_uv"></span> 
+              Total Views: <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
