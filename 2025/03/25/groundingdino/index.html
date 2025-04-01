@@ -133,47 +133,112 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/GroundingDINO">Grounding DINO</a> has recently gained popularity for integrating text-to-image alignment into a DETR-based object detection (OD) model. While it is neither the first model to introduce grounded object detection nor the first to propose a Transformer-based end-to-end OD approach, it achieves competitive performance by simply combining <a target="_blank" rel="noopener" href="https://github.com/microsoft/GLIP">GLIP</a> and <a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/DINO">DINO</a>.  </p>
-<p>In this post, I’ll walk you through the design of Grounding DINO and explain why it excels at zero-shot object detection.  </p>
-<h2 id="Model-Structure"><a href="#Model-Structure" class="headerlink" title="Model Structure"></a>Model Structure</h2><p><img src="image1.PNG" alt="image1">  </p>
-<p>The figure above, taken from the published paper, provides an <strong>overview of Grounding DINO</strong>, highlighting two key components. Let’s start with the input: for a grounded OD model, there are two types of inputs—an <strong>image</strong> and a <strong>text prompt</strong>.  </p>
-<p>Grounding DINO supports text prompts in two formats: <strong>a full sentence</strong> or <strong>a set of keywords</strong>. Based on my experience, it performs <strong>better</strong> when using <strong>keywords</strong>. As stated in the paper, when Grounding DINO detects that the input is a full sentence, it processes the text through a filtering block to extract keywords. However, this means some important information might be lost.  </p>
-<p>For example, if we provide an image and the text prompt “cat, person, mouse”, the first step is feature extraction using <strong>pretrained backbones</strong>. The text backbone is <strong>BERT</strong>, while the image backbone is <strong>Swin Transformer</strong>. The raw feature dimensions are as follows:</p>
+        <p><a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/GroundingDINO">Grounding
+DINO</a> has recently gained popularity for integrating text-to-image
+alignment into a DETR-based object detection (OD) model. While it is
+neither the first model to introduce grounded object detection nor the
+first to propose a Transformer-based end-to-end OD approach, it achieves
+competitive performance by simply combining <a target="_blank" rel="noopener" href="https://github.com/microsoft/GLIP">GLIP</a> and <a target="_blank" rel="noopener" href="https://github.com/IDEA-Research/DINO">DINO</a>.</p>
+<p>In this post, I’ll walk you through the design of Grounding DINO and
+explain why it excels at zero-shot object detection.</p>
+<h2 id="model-structure">Model Structure</h2>
+<figure>
+<img src="image1.PNG" alt="image1">
+<figcaption aria-hidden="true">image1</figcaption>
+</figure>
+<p>The figure above, taken from the published paper, provides an
+<strong>overview of Grounding DINO</strong>, highlighting two key
+components. Let's start with the input: for a grounded OD model, there
+are two types of inputs—an <strong>image</strong> and a <strong>text
+prompt</strong>.</p>
+<p>Grounding DINO supports text prompts in two formats: <strong>a full
+sentence</strong> or <strong>a set of keywords</strong>. Based on my
+experience, it performs <strong>better</strong> when using
+<strong>keywords</strong>. As stated in the paper, when Grounding DINO
+detects that the input is a full sentence, it processes the text through
+a filtering block to extract keywords. However, this means some
+important information might be lost.</p>
+<p>For example, if we provide an image and the text prompt "cat, person,
+mouse", the first step is feature extraction using <strong>pretrained
+backbones</strong>. The text backbone is <strong>BERT</strong>, while
+the image backbone is <strong>Swin Transformer</strong>. The raw feature
+dimensions are as follows:</p>
 <ul>
-<li><strong>Text feature</strong>: <em>(sequence length, d)</em>  </li>
+<li><strong>Text feature</strong>: <em>(sequence length, d)</em><br>
+</li>
 <li><strong>Image feature</strong>: <em>(H, W, d)</em></li>
 </ul>
-<h3 id="Feature-Enhancer"><a href="#Feature-Enhancer" class="headerlink" title="Feature Enhancer"></a>Feature Enhancer</h3><p>Next, these raw features are fed into the feature enhancer, which consists of multiple Feature Enhancer Layers (shown in the bottom right of the figure). Within each layer, there is:</p>
+<h3 id="feature-enhancer">Feature Enhancer</h3>
+<p>Next, these raw features are fed into the feature enhancer, which
+consists of multiple Feature Enhancer Layers (shown in the bottom right
+of the figure). Within each layer, there is:</p>
 <ul>
-<li><strong>Deformable self-attention</strong> – a more computationally efficient version of standard self-attention.  </li>
-<li><strong>Image-to-text cross-attention</strong>, which takes the <strong>tokenized image features as queries (Q)</strong> and outputs a feature of shape <strong>(H × W, d)</strong> (and vice versa for text-to-image).</li>
+<li><strong>Deformable self-attention</strong> – a more computationally
+efficient version of standard self-attention.<br>
+</li>
+<li><strong>Image-to-text cross-attention</strong>, which takes the
+<strong>tokenized image features as queries (Q)</strong> and outputs a
+feature of shape <strong>(H × W, d)</strong> (and vice versa for
+text-to-image).</li>
 </ul>
-<h3 id="Language-Guided-Query-Selection"><a href="#Language-Guided-Query-Selection" class="headerlink" title="Language-Guided Query Selection"></a>Language-Guided Query Selection</h3><p>The Language-Guided Query Selection module is illustrated in the figure below. Essentially, it <strong>selects the top-k image tokens that are most relevant to the text tokens</strong>, refining the alignment between text and image features.  </p>
-<p><img src="image2.PNG" alt="image2">  </p>
-<h3 id="Cross-Modality-Decoder"><a href="#Cross-Modality-Decoder" class="headerlink" title="Cross-Modality Decoder"></a>Cross-Modality Decoder</h3><p>Each layer in the Cross-Modality Decoder, shown in the overview, is a <strong>stacked block</strong> consisting of:</p>
+<h3 id="language-guided-query-selection">Language-Guided Query
+Selection</h3>
+<p>The Language-Guided Query Selection module is illustrated in the
+figure below. Essentially, it <strong>selects the top-k image tokens
+that are most relevant to the text tokens</strong>, refining the
+alignment between text and image features.</p>
+<figure>
+<img src="image2.PNG" alt="image2">
+<figcaption aria-hidden="true">image2</figcaption>
+</figure>
+<h3 id="cross-modality-decoder">Cross-Modality Decoder</h3>
+<p>Each layer in the Cross-Modality Decoder, shown in the overview, is a
+<strong>stacked block</strong> consisting of:</p>
 <ul>
-<li><strong>Self-attention</strong>  </li>
-<li><strong>Two cross-attention layers</strong>  </li>
+<li><strong>Self-attention</strong><br>
+</li>
+<li><strong>Two cross-attention layers</strong><br>
+</li>
 <li><strong>A feed-forward network (FFN)</strong></li>
 </ul>
-<p>Each <strong>output token</strong> represents a <strong>bounding box</strong> along with a <strong>feature vector</strong>, which is then used to ground the detection to the text prompt.  </p>
-<h2 id="Supervision"><a href="#Supervision" class="headerlink" title="Supervision"></a>Supervision</h2><p>The <strong>loss function</strong> in Grounding DINO consists of <strong>two main components</strong>:  </p>
-<ol>
-<li><strong>Localization loss</strong>  </li>
+<p>Each <strong>output token</strong> represents a <strong>bounding
+box</strong> along with a <strong>feature vector</strong>, which is then
+used to ground the detection to the text prompt.</p>
+<h2 id="supervision">Supervision</h2>
+<p>The <strong>loss function</strong> in Grounding DINO consists of
+<strong>two main components</strong>:</p>
+<ol type="1">
+<li><strong>Localization loss</strong><br>
+</li>
 <li><strong>Alignment loss</strong></li>
 </ol>
-<h3 id="Localization-Loss"><a href="#Localization-Loss" class="headerlink" title="Localization Loss"></a>Localization Loss</h3><p>The <strong>localization loss</strong> is a <strong>weighted sum</strong> of:</p>
+<h3 id="localization-loss">Localization Loss</h3>
+<p>The <strong>localization loss</strong> is a <strong>weighted
+sum</strong> of:</p>
 <ul>
-<li><strong>L1 loss</strong> – Measures the absolute difference between the predicted and ground-truth box positions.  </li>
-<li><strong>GIOU loss</strong> – Solve the 0 gradient problem of <strong>intersection-over-union (IoU)</strong> when the predicted and ground-truth boxes are not intersected.</li>
+<li><strong>L1 loss</strong> – Measures the absolute difference between
+the predicted and ground-truth box positions.<br>
+</li>
+<li><strong>GIOU loss</strong> – Solve the 0 gradient problem of
+<strong>intersection-over-union (IoU)</strong> when the predicted and
+ground-truth boxes are not intersected.</li>
 </ul>
-<p>IOU loss can produce gradients for boxes because the intersection and union of bounding boxes are computed using <strong>(x, y, w, h)</strong>, e.g., <strong>x - w&#x2F;2</strong>.  </p>
-<h3 id="Alignment-Loss"><a href="#Alignment-Loss" class="headerlink" title="Alignment Loss"></a>Alignment Loss</h3><p>The alignment loss is an <strong>InfoNCE (contrastive) loss</strong>, designed to associate bounding boxes with their corresponding text prompts. It works by:</p>
+<p>IOU loss can produce gradients for boxes because the intersection and
+union of bounding boxes are computed using <strong>(x, y, w,
+h)</strong>, e.g., <strong>x - w/2</strong>.</p>
+<h3 id="alignment-loss">Alignment Loss</h3>
+<p>The alignment loss is an <strong>InfoNCE (contrastive) loss</strong>,
+designed to associate bounding boxes with their corresponding text
+prompts. It works by:</p>
 <ul>
-<li>Forming <strong>positive sample pairs</strong> between bounding boxes and their corresponding class tokens.  </li>
-<li>Forming <strong>negative sample pairs</strong> between bounding boxes and all other tokens.</li>
+<li>Forming <strong>positive sample pairs</strong> between bounding
+boxes and their corresponding class tokens.<br>
+</li>
+<li>Forming <strong>negative sample pairs</strong> between bounding
+boxes and all other tokens.</li>
 </ul>
-<p>This alignment loss serves as a <strong>classifier</strong> for grounding during the inference phase.</p>
+<p>This alignment loss serves as a <strong>classifier</strong> for
+grounding during the inference phase.</p>
 
       
     </div>
@@ -219,6 +284,15 @@
     
 <nav id="article-nav">
   
+    <a href="/2025/04/01/nerf/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Neural Radiance Fields (NeRF) — The Magic of MLP
+        
+      </div>
+    </a>
+  
   
     <a href="/2025/03/18/sam2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
@@ -236,7 +310,8 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Structure"><span class="nav-number">1.</span> <span class="nav-text">Model Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-Enhancer"><span class="nav-number">1.1.</span> <span class="nav-text">Feature Enhancer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-Guided-Query-Selection"><span class="nav-number">1.2.</span> <span class="nav-text">Language-Guided Query Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Modality-Decoder"><span class="nav-number">1.3.</span> <span class="nav-text">Cross-Modality Decoder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Supervision"><span class="nav-number">2.</span> <span class="nav-text">Supervision</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Localization-Loss"><span class="nav-number">2.1.</span> <span class="nav-text">Localization Loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alignment-Loss"><span class="nav-number">2.2.</span> <span class="nav-text">Alignment Loss</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#model-structure"><span class="nav-number">1.</span> <span class="nav-text">Model Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#feature-enhancer"><span class="nav-number">1.1.</span> <span class="nav-text">Feature Enhancer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#language-guided-query-selection"><span class="nav-number">1.2.</span> <span class="nav-text">Language-Guided Query
+Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-modality-decoder"><span class="nav-number">1.3.</span> <span class="nav-text">Cross-Modality Decoder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#supervision"><span class="nav-number">2.</span> <span class="nav-text">Supervision</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localization-loss"><span class="nav-number">2.1.</span> <span class="nav-text">Localization Loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alignment-loss"><span class="nav-number">2.2.</span> <span class="nav-text">Alignment Loss</span></a></li></ol></li></ol>
     
     </div>
   </aside>

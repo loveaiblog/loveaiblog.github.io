@@ -134,53 +134,138 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>With the continued development of <a target="_blank" rel="noopener" href="https://ai.meta.com/research/publications/sam-2-segment-anything-in-images-and-videos/">Segment Anything Model 2 (SAM2)</a>, I believe it’s essential to dive into the algorithmic details of SAM2 to gain a deeper understanding of how it works and its potential. In this blog, I’ll highlight the most important aspects of SAM2, distilling key insights to help readers grasp its fundamentals and applications.</p>
-<img src="image1.PNG">
-
-<h2 id="How-to-use-SAM2"><a href="#How-to-use-SAM2" class="headerlink" title="How to use SAM2"></a>How to use SAM2</h2><p>The primary function of SAM2 is to extract masklets (i.e., a masklet is a set of masks for the same object) from videos based on interactive prompts. The supported prompt formats include:  </p>
+        <p>With the continued development of <a target="_blank" rel="noopener" href="https://ai.meta.com/research/publications/sam-2-segment-anything-in-images-and-videos/">Segment
+Anything Model 2 (SAM2)</a>, I believe it's essential to dive into the
+algorithmic details of SAM2 to gain a deeper understanding of how it
+works and its potential. In this blog, I'll highlight the most important
+aspects of SAM2, distilling key insights to help readers grasp its
+fundamentals and applications.</p>
+<p><img src="image1.PNG"></p>
+<h2 id="how-to-use-sam2">How to use SAM2</h2>
+<p>The primary function of SAM2 is to extract masklets (i.e., a masklet
+is a set of masks for the same object) from videos based on interactive
+prompts. The supported prompt formats include:</p>
 <ul>
-<li><strong>Point</strong>: Formatted as <code>[x, y]</code>, with attributes for <code>positive</code> and <code>negative</code>.  </li>
-<li><strong>Box</strong>: Formatted as <code>[x_min, y_min, x_max, y_max]</code> without normalization.  </li>
-<li><strong>Mask</strong>: Formatted as <code>numpy.array(H, W)</code>.</li>
-</ul>
-<p>The model takes in all frames of a video, the content of the prompt(s), the corresponding frame, and the instance ID as input. It then outputs a dictionary of masks indexed by frame number and prompt instance ID, formatted as:  </p>
-<pre><code class="language-python">&#123;
-  0: &#123;&#39;obj_0&#39;:..., &#39;obj_1&#39;:...&#125;,  
-  1: &#123;&#39;obj_0&#39;:..., &#39;obj_1&#39;:...&#125;,  
-  ...
-&#125;
-</code></pre>
-<p>According to the official documentation, it may lost tracking during inference, as shown in Step 1, Frames 3 &amp; 4 of the figure. However, thanks to the memory bank, a simple positive point can restore tracking (as demonstrated in Step 2).  </p>
-<p>In practice, this feature isn’t particularly useful since it provides only a limited efficiency boost for point-based pipelines while being quite complex to deploy. If deploying on an annotation platform, the best approach is to generate masks using SAM and then process them with SAM2. For developing automated annotation tools, <strong>bounding boxes</strong> are the most recommended prompt format.</p>
-<img src="image2.PNG">
-
-<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><p>According to the official report, SAM2’s multi-object inference is essentially built upon single-frame inference. In other words, during the model’s forward pass, it only considers <strong>one</strong> prompt at a time. For example, if a prompt marks a cat in the first frame, SAM2 follows these steps for subsequent inference:  </p>
-<ul>
-<li><strong>Image Encoder</strong>: Uses <strong>MAE-pretrained Hiera</strong> (a pyramid feature network) as the image encoder to extract visual information.  </li>
-<li><strong>Memory Attention</strong>: Employs a Transformer-based structure to integrate image features with the memory bank. Specifically, it stacks multiple layers of <strong>self-attention</strong> (for image embeddings) and <strong>cross-attention</strong> in an interleaved “sandwich” pattern.</li>
-<li><strong>Prompt Encoder</strong>: Extracts prompt information in token form, using the same prompt encoder as SAM.  </li>
-<li><strong>Memory Decoder</strong>: Performs attention operations on the fused image embeddings, memory-merged outputs, and prompt tokens (see diagram for details).  <ul>
-<li>The <strong>IoU score</strong> selects the highest-scoring mask from multiple outputs.  </li>
-<li>The <strong>occlusion score</strong> determines whether the target object is absent in the current frame (which explains why SAM2 sometimes loses tracking).  </li>
-<li>The <strong>object pointer</strong> carries memory information forward for the next frame’s prediction.</li>
-</ul>
+<li><strong>Point</strong>: Formatted as <code>[x, y]</code>, with
+attributes for <code>positive</code> and <code>negative</code>.<br>
 </li>
-<li><strong>Memory Encoder</strong>: The output masks are downsampled, element-wise summed with the image encoder output, then passed through a <strong>convolutional</strong> network before being stored in the memory bank.  </li>
-<li><strong>Memory Bank</strong>: Stores information from the most recent <strong>N</strong> frames and permanently retains <strong>M</strong> frames that contain prompts.</li>
+<li><strong>Box</strong>: Formatted as
+<code>[x_min, y_min, x_max, y_max]</code> without normalization.<br>
+</li>
+<li><strong>Mask</strong>: Formatted as
+<code>numpy.array(H, W)</code>.</li>
 </ul>
-<img src="image3.PNG">
-
-<h2 id="Data-and-Training"><a href="#Data-and-Training" class="headerlink" title="Data and Training"></a>Data and Training</h2><p>The development team collected and annotated the <strong>SA-V dataset</strong>, which consists of <strong>50.9K videos</strong> and <strong>190.9K masklets</strong>. This dataset was manually labeled using both <strong>SAM</strong> and <strong>SAM2</strong>. As the dataset size increased, SAM2’s performance improved, and annotation efficiency also benefited from iterative enhancements to SAM2 itself.  </p>
-<p>SAM2 was initially trained on <strong>SA-1B</strong>, a static image segmentation dataset. Given its architecture, during this phase, <strong>memory attention</strong> only applied <strong>self-attention</strong> to image embeddings, while <strong>output tokens</strong> were ignored in the memory decoder. The loss function used in pretraining differs slightly from that of SAM—details can be found in the research paper.  </p>
-<p>After pretraining, SAM2 was further trained on <strong>video data</strong>, which included <strong>SA-V</strong>, <strong>internal company-licensed videos</strong>, and <strong>a subset (10%) of SA-1B</strong>. The training alternated between video and static image datasets, with the data volume for each training iteration proportional to the dataset’s size.  </p>
-<p>A few additional key points:  </p>
+<p>The model takes in all frames of a video, the content of the
+prompt(s), the corresponding frame, and the instance ID as input. It
+then outputs a dictionary of masks indexed by frame number and prompt
+instance ID, formatted as:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&#123;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>: &#123;<span class="st">&#39;obj_0&#39;</span>:..., <span class="st">&#39;obj_1&#39;</span>:...&#125;,  </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>: &#123;<span class="st">&#39;obj_0&#39;</span>:..., <span class="st">&#39;obj_1&#39;</span>:...&#125;,  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<p>According to the official documentation, it may lost tracking during
+inference, as shown in Step 1, Frames 3 &amp; 4 of the figure. However,
+thanks to the memory bank, a simple positive point can restore tracking
+(as demonstrated in Step 2).</p>
+<p>In practice, this feature isn't particularly useful since it provides
+only a limited efficiency boost for point-based pipelines while being
+quite complex to deploy. If deploying on an annotation platform, the
+best approach is to generate masks using SAM and then process them with
+SAM2. For developing automated annotation tools, <strong>bounding
+boxes</strong> are the most recommended prompt format.</p>
+<p><img src="image2.PNG"></p>
+<h2 id="architecture">Architecture</h2>
+<p>According to the official report, SAM2's multi-object inference is
+essentially built upon single-frame inference. In other words, during
+the model’s forward pass, it only considers <strong>one</strong> prompt
+at a time. For example, if a prompt marks a cat in the first frame, SAM2
+follows these steps for subsequent inference:</p>
 <ul>
-<li>During training, the ratio of prompt types was <strong>50% mask, 25% point, and 25% box</strong>.  </li>
-<li>Videos had a <strong>50% probability of being flipped</strong> to enable <strong>bidirectional propagation</strong> (which I discuss in another blog post).  </li>
-<li><strong>Random horizontal flips</strong> and <strong>random affine transforms</strong> were used for data augmentation.</li>
+<li><strong>Image Encoder</strong>: Uses <strong>MAE-pretrained
+Hiera</strong> (a pyramid feature network) as the image encoder to
+extract visual information.<br>
+</li>
+<li><strong>Memory Attention</strong>: Employs a Transformer-based
+structure to integrate image features with the memory bank.
+Specifically, it stacks multiple layers of
+<strong>self-attention</strong> (for image embeddings) and
+<strong>cross-attention</strong> in an interleaved "sandwich"
+pattern.</li>
+<li><strong>Prompt Encoder</strong>: Extracts prompt information in
+token form, using the same prompt encoder as SAM.<br>
+</li>
+<li><strong>Memory Decoder</strong>: Performs attention operations on
+the fused image embeddings, memory-merged outputs, and prompt tokens
+(see diagram for details).
+<ul>
+<li>The <strong>IoU score</strong> selects the highest-scoring mask from
+multiple outputs.<br>
+</li>
+<li>The <strong>occlusion score</strong> determines whether the target
+object is absent in the current frame (which explains why SAM2 sometimes
+loses tracking).<br>
+</li>
+<li>The <strong>object pointer</strong> carries memory information
+forward for the next frame’s prediction.<br>
+</li>
+</ul></li>
+<li><strong>Memory Encoder</strong>: The output masks are downsampled,
+element-wise summed with the image encoder output, then passed through a
+<strong>convolutional</strong> network before being stored in the memory
+bank.<br>
+</li>
+<li><strong>Memory Bank</strong>: Stores information from the most
+recent <strong>N</strong> frames and permanently retains
+<strong>M</strong> frames that contain prompts.</li>
 </ul>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>SAM2 represents a significant step forward in video segmentation by integrating memory-based tracking with prompt-guided mask extraction. While it builds on the strengths of SAM, its reliance on single-frame inference and complex deployment considerations mean it is best suited for specific use cases, such as annotation platforms and automated labeling tools. As research in segmentation models continues to evolve, improvements in tracking stability and efficiency will likely make models like SAM2 even more powerful.  </p>
-<p>I hope this post helps clarify how SAM2 works at a high level. If you’re interested in exploring more, I encourage you to experiment with SAM2 yourself or dive into the official research paper for deeper insights.</p>
+<p><img src="image3.PNG"></p>
+<h2 id="data-and-training">Data and Training</h2>
+<p>The development team collected and annotated the <strong>SA-V
+dataset</strong>, which consists of <strong>50.9K videos</strong> and
+<strong>190.9K masklets</strong>. This dataset was manually labeled
+using both <strong>SAM</strong> and <strong>SAM2</strong>. As the
+dataset size increased, SAM2's performance improved, and annotation
+efficiency also benefited from iterative enhancements to SAM2
+itself.</p>
+<p>SAM2 was initially trained on <strong>SA-1B</strong>, a static image
+segmentation dataset. Given its architecture, during this phase,
+<strong>memory attention</strong> only applied
+<strong>self-attention</strong> to image embeddings, while
+<strong>output tokens</strong> were ignored in the memory decoder. The
+loss function used in pretraining differs slightly from that of
+SAM—details can be found in the research paper.</p>
+<p>After pretraining, SAM2 was further trained on <strong>video
+data</strong>, which included <strong>SA-V</strong>, <strong>internal
+company-licensed videos</strong>, and <strong>a subset (10%) of
+SA-1B</strong>. The training alternated between video and static image
+datasets, with the data volume for each training iteration proportional
+to the dataset’s size.</p>
+<p>A few additional key points:</p>
+<ul>
+<li>During training, the ratio of prompt types was <strong>50% mask, 25%
+point, and 25% box</strong>.<br>
+</li>
+<li>Videos had a <strong>50% probability of being flipped</strong> to
+enable <strong>bidirectional propagation</strong> (which I discuss in
+another blog post).<br>
+</li>
+<li><strong>Random horizontal flips</strong> and <strong>random affine
+transforms</strong> were used for data augmentation.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>SAM2 represents a significant step forward in video segmentation by
+integrating memory-based tracking with prompt-guided mask extraction.
+While it builds on the strengths of SAM, its reliance on single-frame
+inference and complex deployment considerations mean it is best suited
+for specific use cases, such as annotation platforms and automated
+labeling tools. As research in segmentation models continues to evolve,
+improvements in tracking stability and efficiency will likely make
+models like SAM2 even more powerful.</p>
+<p>I hope this post helps clarify how SAM2 works at a high level. If
+you're interested in exploring more, I encourage you to experiment with
+SAM2 yourself or dive into the official research paper for deeper
+insights.</p>
 
       
     </div>
@@ -252,7 +337,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-use-SAM2"><span class="nav-number">1.</span> <span class="nav-text">How to use SAM2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture"><span class="nav-number">2.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-and-Training"><span class="nav-number">3.</span> <span class="nav-text">Data and Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-use-sam2"><span class="nav-number">1.</span> <span class="nav-text">How to use SAM2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#architecture"><span class="nav-number">2.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-and-training"><span class="nav-number">3.</span> <span class="nav-text">Data and Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li></ol>
     
     </div>
   </aside>
