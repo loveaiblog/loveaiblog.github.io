@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VLA Models from Physical Intelligence | Zihan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Algorithm" />
+  
+  
+  
+  
+  <meta property="og:type" content="article">
+<meta property="og:title" content="VLA Models from Physical Intelligence">
+<meta property="og:url" content="https://loveaiblog.github.io/2025/05/14/pi/index.html">
+<meta property="og:site_name" content="Zihan&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://loveaiblog.github.io/2025/05/14/pi/image1.PNG">
+<meta property="og:image" content="https://loveaiblog.github.io/2025/05/14/pi/image2.PNG">
+<meta property="og:image" content="https://loveaiblog.github.io/2025/05/14/pi/image3.PNG">
+<meta property="article:published_time" content="2025-05-14T14:39:21.000Z">
+<meta property="article:modified_time" content="2025-05-13T16:35:20.310Z">
+<meta property="article:author" content="Zihan Liu">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loveaiblog.github.io/2025/05/14/pi/image1.PNG">
+  
+    <link rel="alternate" href="/atom.xml" title="Zihan&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Zihan&#39;s Blog" rel="home"> Zihan&#39;s Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">A diary of AI development and learning activities.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-pi" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      VLA Models from Physical Intelligence
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2025/05/14/pi/" class="article-date">
+	  <time datetime="2025-05-14T14:39:21.000Z" itemprop="datePublished">May 14, 2025</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  Total Views for This Post: <span id="busuanzi_value_page_pv"></span>
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In this blog, I’ll present three <strong>Vision-Language-Action
+(VLA)</strong> models from Physical Intelligence in chronological order:
+<strong><span class="math inline">\(\pi_{0}\)</span></strong>,
+<strong>FAST</strong>, and <strong><span class="math inline">\(\pi_{0.5}\)</span></strong>. For <span class="math inline">\(\pi_{0}\)</span>, I’ll describe the full VLA
+architecture in detail. For FAST and <span class="math inline">\(\pi_{0.5}\)</span>, I’ll focus on their
+<strong>key innovations</strong> over previous work.</p>
+<hr>
+<h2 id="pi_0"><span class="math inline">\(\pi_{0}\)</span></h2>
+<p>The <strong><span class="math inline">\(\pi_{0}\)</span></strong>
+model takes as input: 1) a sequence of images from a camera, 2) a
+<strong>language instruction</strong>, and 3) the robot’s current state
+(e.g., joint angles). It outputs an <strong>action command</strong>
+vector.</p>
+<figure>
+<img src="image1.PNG" alt="image1.PNG">
+<figcaption aria-hidden="true">image1.PNG</figcaption>
+</figure>
+<ul>
+<li><p><strong>Data Sources</strong>:</p>
+<ul>
+<li><strong>Internet-scale pretraining</strong>: We use a 2 B–parameter
+<strong>PaliGemma</strong> model, which combines a SigLIP image encoder
+with a decoder-only Gemma. This model is <strong>frozen</strong> during
+<span class="math inline">\(\pi_{0}\)</span> training, reducing compute
+but capping generalization to PaliGemma’s visual–language
+understanding.</li>
+<li><strong>Robot-collected data</strong>: Includes the Open
+X-Embodiment dataset and in-house hardware data to train the
+<strong>Action Expert</strong>.</li>
+</ul></li>
+<li><p><strong>Action Expert</strong> (≈300 M parameters, no
+pretraining):</p>
+<ol type="1">
+<li><p><strong>Stage 1 (Deterministic)</strong>:</p>
+<ul>
+<li>Inputs: PaliGemma embeddings + expanded robot state (via MLP).</li>
+<li>Process: Multiple self-attention layers.</li>
+<li>Output: A combined embedding used in Stage 2.</li>
+</ul></li>
+<li><p><strong>Stage 2 (Iterative Denoising)</strong>:</p>
+<ul>
+<li>Inputs: Combined embedding + noise sequence representing the
+action.</li>
+<li>Process: 10 iterations of self-attention to denoise and predict the
+final action.</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Training</strong>:</p>
+<ul>
+<li>Optimize the Action Expert with <strong>Flow Matching
+Loss</strong>.</li>
+<li>Keep PaliGemma parameters <strong>frozen</strong>.</li>
+</ul></li>
+</ul>
+<hr>
+<h2 id="fast">FAST</h2>
+<p><strong>FAST</strong> converts continuous actions into
+<strong>discrete token sequences</strong> in the <strong>frequency
+domain</strong>, reframing flow-matching as an autoregressive
+classification task:</p>
+<ol type="1">
+<li><p><strong>Normalization</strong>:</p>
+<ul>
+<li>Clip each joint’s values at the 1st/99th percentiles.</li>
+<li>Scale to [–1, 1].</li>
+<li><strong>Bold</strong>: Ensures outliers don’t distort training.</li>
+</ul></li>
+<li><p><strong>Fourier Transform</strong>:</p>
+<ul>
+<li>For an action sequence <span class="math inline">\(A = \{a₁, …,
+a_H\}\)</span>, each joint’s time-series is converted to frequency
+coefficients <span class="math inline">\(C_{i,k}\)</span>.</li>
+</ul>
+<figure>
+<img src="image2.PNG" alt="image2.PNG">
+<figcaption aria-hidden="true">image2.PNG</figcaption>
+</figure></li>
+<li><p><strong>Quantization</strong>:</p>
+<ul>
+<li>Scale by <strong>γ</strong>, then round to integers.</li>
+<li>Zeros out small (high-frequency) components, <strong>reducing
+codebook size</strong>.</li>
+</ul></li>
+<li><p><strong>Tokenization with BPE</strong>:</p>
+<ul>
+<li>Order tokens from low to high frequency.</li>
+<li>Apply Byte-Pair Encoding to merge frequent integer patterns.</li>
+</ul>
+<p><strong>Caveats</strong>:</p>
+<ul>
+<li><strong>False correlations</strong>: BPE may bind unrelated joints’
+frequencies.</li>
+<li><strong>Fixed length</strong>: Action sequences need <strong>exact
+alignment</strong>; one token error can misassign high-frequency
+motion.</li>
+<li><strong>Bold</strong>: Explains why FAST is used only for
+<strong>pretraining</strong> in <span class="math inline">\(\pi_{0.5}\)</span>.</li>
+</ul></li>
+<li><p><strong>Decoding (for inference only)</strong>:</p>
+<ul>
+<li>Reverse BPE → frequency tokens → dequantize → inverse DCT →
+denormalize.</li>
+<li><strong>Note</strong>: <span class="math inline">\(\pi_{0.5}\)</span> skips FAST decoding during
+inference.</li>
+</ul></li>
+</ol>
+<hr>
+<h2 id="pi_0.5"><span class="math inline">\(\pi_{0.5}\)</span></h2>
+<figure>
+<img src="image3.PNG" alt="image3.PNG">
+<figcaption aria-hidden="true">image3.PNG</figcaption>
+</figure>
+<p><strong><span class="math inline">\(\pi_{0.5}\)</span> introduces a
+new high-level language decoding stage</strong> compared to <span class="math inline">\(\pi\_{0}\)</span>. This stage translates complex
+instructions into more intuitive action descriptions, implemented as a
+<strong>Gemma decoder head</strong>. Architecturally, this is the only
+difference between <span class="math inline">\(\pi_{0.5}\)</span> and
+<span class="math inline">\(\pi\_{0}\)</span>.</p>
+<p>In terms of architecture, the <strong>encoder part of PaliGemma is
+shared</strong> across both vision-language feature extraction and
+high-level instruction decomposition. Unlike <span class="math inline">\(\pi\_{0}\)</span>, <strong><span class="math inline">\(\pi_{0.5}\)</span> does not freeze the VLM
+parameters during training</strong>, likely due to the increased scale
+and diversity of the training data.</p>
+<h3 id="training-strategy">Training Strategy</h3>
+<p>Training is divided into <strong>two phases: pretraining and
+post-training</strong>.</p>
+<ul>
+<li><strong>Pretraining</strong>: The PaliGemma VLM is pretrained using
+various type of data, including discrete action tokens from FAST, object
+detection, .... As mentioned by author, where they said "We do not
+pretrain an action expert. Instead, we rely on the pretrained VLM and
+align it with the action space post-hoc using alignment heads", action
+expert is not involved in .</li>
+<li><strong>Post-training</strong>: Like in <span class="math inline">\(\pi\_{0}\)</span>, the <strong>VLM is
+frozen</strong>, and the <strong>action expert</strong> is trained using
+<strong>Flow Matching Loss</strong>.</li>
+</ul>
+<hr>
+<p>In summary, <span class="math inline">\(\pi_{0}\)</span> is a system
+that assembles prior components from the field---a VLM, a Transformer
+decoder, and a flow-matching mechanism. The team later proposed <span class="math inline">\(\pi_{0.5}\)</span>, a pretraining method for the
+VLM to address the limitation in <span class="math inline">\(\pi_{0}\)</span> where the VLM could not be
+customized pretrained. If we're being honest, FAST feels more like a
+joke than a breakthrough. The method sounds fancy, but its actual
+contribution? Questionable at best. Still, we have to give it credit for
+one thing: it teaches us a lot about what <em>not</em> to do when
+aligning vision and action in multimodal systems.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li></ul>
+
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'loveaiblog';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/04/01/nerf/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Neural Radiance Fields (NeRF) — The Magic of MLP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pi_0"><span class="nav-number">1.</span> <span class="nav-text">\(\pi_{0}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fast"><span class="nav-number">2.</span> <span class="nav-text">FAST</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pi_0.5"><span class="nav-number">3.</span> <span class="nav-text">\(\pi_{0.5}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#training-strategy"><span class="nav-number">3.1.</span> <span class="nav-text">Training Strategy</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2025 Zihan&#39;s Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              Total Visitors: <span id="busuanzi_value_site_uv"></span> 
+              Total Views: <span id="busuanzi_value_site_pv"></span>
+            </span>
+          
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
